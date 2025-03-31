@@ -8,6 +8,7 @@ import SuccessStories from "@/components/sections/SuccessStories";
 import FinalCTA from "@/components/sections/FinalCTA";
 import PageLayout from "@/components/layout/PageLayout";
 import { useToast } from "@/hooks/use-toast";
+import CompleteSolution from "@/components/sections/CompleteSolution";
 
 const Index = () => {
   const { toast } = useToast();
@@ -46,6 +47,7 @@ const Index = () => {
     <PageLayout>
       <Hero onSubmit={handleFormSubmit} />
       <Problem />
+      <CompleteSolution />
       <Solution />
       <Process onSubmit={handleFormSubmit} />
       <SuccessStories />

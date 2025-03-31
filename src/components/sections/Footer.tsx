@@ -1,7 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Globe, ArrowRight } from "lucide-react";
+import { Mail, Phone, Globe, ArrowRight, MapPin, BookOpen } from "lucide-react";
 
 interface FooterProps {
   onSubmit: (e: React.FormEvent) => void;
@@ -9,19 +9,28 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onSubmit }) => {
   const links = [
-    { title: "Home", href: "#" },
-    { title: "Services", href: "#" },
-    { title: "Case Studies", href: "#" },
-    { title: "About", href: "#" },
-    { title: "Contact", href: "#" },
+    { title: "Home", href: "/" },
+    { title: "Services", href: "/services" },
+    { title: "About", href: "/about" },
+    { title: "Pricing", href: "/pricing" },
+    { title: "Contact", href: "/contact" },
+  ];
+  
+  const resourceLinks = [
+    { title: "Knowledge Base", href: "/knowledge" },
+    { title: "FAQ", href: "/faq" },
+    { title: "Tutorials", href: "/tutorials" },
+    { title: "Case Studies", href: "/case-studies" },
   ];
   
   const legalLinks = [
     { title: "Privacy Policy", href: "#" },
     { title: "Terms & Conditions", href: "#" },
+    { title: "Cookie Policy", href: "#" },
   ];
   
   const contactInfo = [
+    { icon: <MapPin className="h-5 w-5" />, text: "30 N Gould St, STE R, Sheridan, WY 82801", href: "https://maps.google.com/?q=30+N+Gould+St,+STE+R,+Sheridan,+WY+82801" },
     { icon: <Globe className="h-5 w-5" />, text: "leadsobtainer.com", href: "https://leadsobtainer.com" },
     { icon: <Mail className="h-5 w-5" />, text: "info@leadsobtainer.com", href: "mailto:info@leadsobtainer.com" },
     { icon: <Phone className="h-5 w-5" />, text: "(XXX) XXX-XXXX", href: "tel:+1XXXXXXXXXX" },
@@ -30,9 +39,10 @@ const Footer: React.FC<FooterProps> = ({ onSubmit }) => {
   return (
     <footer className="bg-gray-50 pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
           <motion.div
+            className="md:col-span-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -48,9 +58,11 @@ const Footer: React.FC<FooterProps> = ({ onSubmit }) => {
                 <li key={index}>
                   <a 
                     href={item.href} 
-                    className="flex items-center gap-3 text-gray-700 hover:text-agency-blue transition-colors"
+                    className="flex items-start gap-3 text-gray-700 hover:text-agency-blue transition-colors"
+                    target={item.href.startsWith('http') ? "_blank" : "_self"}
+                    rel={item.href.startsWith('http') ? "noopener noreferrer" : ""}
                   >
-                    <span className="text-agency-blue">{item.icon}</span>
+                    <span className="text-agency-blue mt-1">{item.icon}</span>
                     <span>{item.text}</span>
                   </a>
                 </li>
@@ -81,12 +93,35 @@ const Footer: React.FC<FooterProps> = ({ onSubmit }) => {
             </ul>
           </motion.div>
           
-          {/* Legal */}
+          {/* Resources */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h3 className="text-lg font-bold mb-6 text-gray-800">Resources</h3>
+            <ul className="space-y-3">
+              {resourceLinks.map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={link.href} 
+                    className="text-gray-600 hover:text-agency-blue flex items-center gap-2 transition-colors"
+                  >
+                    <BookOpen className="h-3 w-3" />
+                    <span>{link.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+          
+          {/* Legal */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
             <h3 className="text-lg font-bold mb-6 text-gray-800">Legal</h3>
             <ul className="space-y-3">
@@ -102,10 +137,22 @@ const Footer: React.FC<FooterProps> = ({ onSubmit }) => {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-6">
+              <h3 className="text-lg font-bold mb-6 text-gray-800">Knowledge Center</h3>
+              <a 
+                href="/knowledge" 
+                className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg transition-colors"
+              >
+                <BookOpen className="h-4 w-4" />
+                <span>Visit Knowledge Base</span>
+              </a>
+            </div>
           </motion.div>
           
           {/* Newsletter */}
           <motion.div
+            className="md:col-span-1"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

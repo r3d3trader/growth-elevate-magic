@@ -3,9 +3,8 @@ import React from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import { motion } from "framer-motion";
 import CtaButton from "@/components/ui/cta-button";
-import { Check, Award, Lightbulb, ShieldCheck, Users, MessageCircle } from "lucide-react";
+import { Check, Award, Lightbulb, ShieldCheck, Users, MessageCircle, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const About = () => {
   // Define core values
@@ -34,34 +33,11 @@ const About = () => {
       icon: <ShieldCheck className="h-8 w-8 text-green-500" />,
       title: "Simplicity",
       description: "Fully managed services with no setup hassles, letting you focus on running your business."
-    }
-  ];
-
-  // Define team members
-  const teamMembers = [
-    {
-      name: "John Smith",
-      role: "Founder & CEO",
-      bio: "Digital marketing veteran with 15+ years of experience scaling local businesses.",
-      avatar: "J"
     },
     {
-      name: "Sarah Johnson",
-      role: "Head of Automation",
-      bio: "Workflow automation specialist with expertise in CRM and business process optimization.",
-      avatar: "S"
-    },
-    {
-      name: "Michael Chen",
-      role: "Lead Web Developer",
-      bio: "Full-stack developer specializing in high-performance, conversion-focused websites.",
-      avatar: "M"
-    },
-    {
-      name: "Elena Rodriguez",
-      role: "Marketing Strategist",
-      bio: "Data-driven marketing expert with a track record of 3-4x ROI improvements.",
-      avatar: "E"
+      icon: <Zap className="h-8 w-8 text-yellow-500" />,
+      title: "Performance",
+      description: "Delivering measurable results and continuous improvement to maximize your ROI."
     }
   ];
 
@@ -248,47 +224,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Leadership Team</h2>
-            <p className="text-lg text-gray-700">
-              Meet the experts behind our success
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl text-center border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <Avatar className="h-24 w-24 mx-auto mb-4">
-                  <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${member.name}`} alt={member.name} />
-                  <AvatarFallback className="text-xl bg-agency-blue text-white">{member.avatar}</AvatarFallback>
-                </Avatar>
-                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-agency-blue mb-3">{member.role}</p>
-                <p className="text-gray-700">{member.bio}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Company Milestones */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
