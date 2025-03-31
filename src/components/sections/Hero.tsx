@@ -80,7 +80,7 @@ const Hero: React.FC<HeroProps> = ({
           delay: 0.2
         }}>
             <div className="bg-white rounded-xl shadow-custom p-6 lg:p-8 shadow-custom-hover">
-              <img alt="Business owner reviewing analytics" className="w-full h-auto rounded-lg mb-6" src="/lovable-uploads/1784ffd0-50ef-4ed6-8306-b09d62d62022.png" />
+              <img alt="Business owner reviewing analytics" className="w-full h-auto rounded-lg mb-6" src="/lovable-uploads/5a8b148d-910e-41ef-8ce8-5cd46d87b797.jpg" />
               
               <form onSubmit={onSubmit} className="space-y-4">
                 <div>
