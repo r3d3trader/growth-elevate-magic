@@ -6,8 +6,7 @@ import Solution from "@/components/sections/Solution";
 import Process from "@/components/sections/Process";
 import SuccessStories from "@/components/sections/SuccessStories";
 import FinalCTA from "@/components/sections/FinalCTA";
-import Footer from "@/components/sections/Footer";
-import ScrollToTop from "@/components/ui/scroll-to-top";
+import PageLayout from "@/components/layout/PageLayout";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
@@ -44,16 +43,14 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-slate-50 to-white overflow-x-hidden">
+    <PageLayout>
       <Hero onSubmit={handleFormSubmit} />
       <Problem />
       <Solution />
       <Process onSubmit={handleFormSubmit} />
       <SuccessStories />
       <FinalCTA onSubmit={handleFormSubmit} />
-      <Footer onSubmit={handleFormSubmit} />
-      <ScrollToTop />
-    </div>
+    </PageLayout>
   );
 };
 
