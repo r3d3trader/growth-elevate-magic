@@ -22,17 +22,24 @@ const Index = () => {
     });
   };
   
-  // Add scroll reveal effect
+  // Add enhanced scroll reveal effect
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("reveal-visible");
+            // Add a small delay to children elements for a cascade effect
+            const children = entry.target.querySelectorAll('.reveal-child');
+            children.forEach((child, index) => {
+              setTimeout(() => {
+                child.classList.add('reveal-visible');
+              }, 100 * index);
+            });
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.15, rootMargin: "0px 0px -100px 0px" }
     );
     
     const revealElements = document.querySelectorAll(".reveal-from-bottom, .reveal-from-left, .reveal-from-right");

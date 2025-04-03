@@ -22,9 +22,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-slate-50 to-white min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-white">
       <Navbar />
-      <main className="pt-20">{children}</main>
+      <main className="pt-16">{children}</main>
       <Footer onSubmit={handleFormSubmit} />
       <ScrollToTop />
     </div>

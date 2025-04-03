@@ -35,7 +35,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white shadow-md py-2"
+          ? "bg-white/90 backdrop-blur-md shadow-sm py-2"
           : "bg-transparent py-4"
       )}
     >
@@ -47,9 +47,10 @@ const Navbar = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-xl md:text-2xl font-bold text-agency-blue"
+              className="text-xl md:text-2xl font-bold"
             >
-              Leads<span className="text-agency-indigo">Obtainer</span>
+              <span className="text-agency-blue">Leads</span>
+              <span className="text-agency-indigo">Obtainer</span>
             </motion.div>
           </Link>
 
@@ -62,31 +63,31 @@ const Navbar = () => {
           >
             <Link
               to="/"
-              className="text-gray-700 hover:text-agency-blue transition-colors"
+              className="text-gray-700 hover:text-agency-blue transition-colors text-sm font-medium"
             >
               Home
             </Link>
             <Link
               to="/services"
-              className="text-gray-700 hover:text-agency-blue transition-colors"
+              className="text-gray-700 hover:text-agency-blue transition-colors text-sm font-medium"
             >
               Services
             </Link>
             <Link
               to="/pricing"
-              className="text-gray-700 hover:text-agency-blue transition-colors"
+              className="text-gray-700 hover:text-agency-blue transition-colors text-sm font-medium"
             >
               Pricing
             </Link>
             <Link
               to="/about"
-              className="text-gray-700 hover:text-agency-blue transition-colors"
+              className="text-gray-700 hover:text-agency-blue transition-colors text-sm font-medium"
             >
               About
             </Link>
             <Link
               to="/contact"
-              className="text-gray-700 hover:text-agency-blue transition-colors"
+              className="text-gray-700 hover:text-agency-blue transition-colors text-sm font-medium"
             >
               Contact
             </Link>
@@ -99,12 +100,12 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="text-gray-700 hover:text-agency-blue"
+              className="p-2 rounded-full bg-gray-50 text-gray-700 hover:bg-gray-100"
             >
               {mobileMenuOpen ? (
-                <X className="h-7 w-7" />
+                <X className="h-5 w-5" />
               ) : (
-                <Menu className="h-7 w-7" />
+                <Menu className="h-5 w-5" />
               )}
             </button>
           </div>
@@ -118,38 +119,38 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden py-4"
           >
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-4 bg-white rounded-lg p-4 mt-2 shadow-lg">
               <Link
                 to="/"
-                className="text-gray-700 hover:text-agency-blue transition-colors py-2"
+                className="text-gray-700 hover:text-agency-blue transition-colors py-2 px-2 rounded hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
                 to="/services"
-                className="text-gray-700 hover:text-agency-blue transition-colors py-2"
+                className="text-gray-700 hover:text-agency-blue transition-colors py-2 px-2 rounded hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Services
               </Link>
               <Link
                 to="/pricing"
-                className="text-gray-700 hover:text-agency-blue transition-colors py-2"
+                className="text-gray-700 hover:text-agency-blue transition-colors py-2 px-2 rounded hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Pricing
               </Link>
               <Link
                 to="/about"
-                className="text-gray-700 hover:text-agency-blue transition-colors py-2"
+                className="text-gray-700 hover:text-agency-blue transition-colors py-2 px-2 rounded hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 to="/contact"
-                className="text-gray-700 hover:text-agency-blue transition-colors py-2"
+                className="text-gray-700 hover:text-agency-blue transition-colors py-2 px-2 rounded hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact

@@ -105,20 +105,26 @@
   
   .reveal-from-bottom {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.7s ease-out;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
   
   .reveal-from-left {
     opacity: 0;
-    transform: translateX(-40px);
-    transition: all 0.7s ease-out;
+    transform: translateX(-30px);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
   
   .reveal-from-right {
     opacity: 0;
-    transform: translateX(40px);
-    transition: all 0.7s ease-out;
+    transform: translateX(30px);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .reveal-child {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   
   .reveal-visible {
@@ -127,15 +133,38 @@
   }
   
   .shadow-custom {
-    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.15), 0 10px 10px -5px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.12), 0 4px 8px -2px rgba(37, 99, 235, 0.06);
   }
   
   .shadow-custom-hover {
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
   
   .shadow-custom-hover:hover {
-    box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.25), 0 10px 20px -5px rgba(37, 99, 235, 0.2);
-    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.15), 0 8px 16px -6px rgba(37, 99, 235, 0.1);
+    transform: translateY(-3px);
+  }
+  
+  /* Modern card styles */
+  .modern-card {
+    @apply bg-white rounded-xl p-6 shadow-lg border border-gray-100/60 transition-all duration-300;
+  }
+  
+  .modern-card:hover {
+    @apply shadow-xl border-gray-100;
+  }
+  
+  /* Clean button styles */
+  .clean-button {
+    @apply rounded-lg px-5 py-2.5 font-medium transition-all duration-300;
+  }
+  
+  /* Subtle hover effects */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-3px);
   }
 }
