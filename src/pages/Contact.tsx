@@ -50,19 +50,19 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="h-6 w-6" />,
+      icon: <Mail className="h-6 w-6 text-green-400" />,
       title: "Email",
       content: "info@leadsobatiner.com",
       link: "mailto:info@leadsobatiner.com",
     },
     {
-      icon: <Phone className="h-6 w-6" />,
+      icon: <Phone className="h-6 w-6 text-green-400" />,
       title: "Phone",
       content: "(XXX) XXX-XXXX",
       link: "tel:+1XXXXXXXXXX",
     },
     {
-      icon: <MapPin className="h-6 w-6" />,
+      icon: <MapPin className="h-6 w-6 text-green-400" />,
       title: "Address",
       content: "30 N Gould St, STE R, Sheridan, WY 82801",
       link: "https://goo.gl/maps/YourGoogleMapsLink",
@@ -72,7 +72,7 @@ const Contact = () => {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-gradient-to-b from-agency-blue-50 to-white">
+      <section className="pt-28 pb-16 bg-gradient-to-b from-gray-900 to-gray-800"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -80,10 +80,10 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-green-400"> {/* Updated text color */}
               <span className="text-gradient">Let's Connect</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8">
+            <p className="text-lg md:text-xl text-gray-200 mb-8"> {/* Updated text color */}
               Ready to 4x your business growth in 90 days? Get in touch with our team to schedule your free strategy call.
             </p>
           </motion.div>
@@ -91,7 +91,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Info Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-gray-900"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             {contactInfo.map((item, index) => (
@@ -100,15 +100,15 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center"
+                className="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center border border-gray-700" {/* Updated background and added border */}
               >
-                <div className="bg-agency-blue-50 p-3 rounded-full mb-4 text-agency-blue">
+                <div className="bg-green-600 p-3 rounded-full mb-4 text-gray-100"> {/* Updated background and text color */}
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <a 
-                  href={item.link} 
-                  className="text-gray-700 hover:text-agency-blue transition-colors"
+                <h3 className="text-xl font-bold mb-2 text-green-400"> {/* Updated text color */} {item.title}</h3>
+                <a
+                  href={item.link}
+                  className="text-gray-200 hover:text-green-400 transition-colors" {/* Updated text color */}
                 >
                   {item.content}
                 </a>
@@ -119,7 +119,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-gray-900"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             <motion.div
@@ -129,8 +129,8 @@ const Contact = () => {
               transition={{ duration: 0.5 }}
               className="lg:w-1/2"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Get Your Free Strategy Call</h2>
-              <p className="text-lg text-gray-700 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-green-400"> {/* Updated text color */}Get Your Free Strategy Call</h2>
+              <p className="text-lg text-gray-200 mb-6"> {/* Updated text color */}
                 Fill out the form to schedule your free, no-obligation strategy call with one of our growth experts. We'll discuss your business goals and create a custom plan to help you achieve them.
               </p>
 
@@ -142,28 +142,28 @@ const Contact = () => {
                   "Get a custom roadmap to 4x your growth in 90 days",
                 ].map((point, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <div className="bg-green-100 rounded-full p-1 mt-1">
-                      <Check className="h-5 w-5 text-green-600" />
+                    <div className="bg-green-600 rounded-full p-1 mt-1 text-gray-100"> {/* Updated background and text color */}
+                      <Check className="h-5 w-5 text-gray-100" />
                     </div>
-                    <p className="text-gray-700">{point}</p>
+                    <p className="text-gray-200">{point}</p> {/* Updated text color */}
                   </div>
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-white rounded-xl shadow-md">
-                <h3 className="text-xl font-bold mb-3">Our Promise to You</h3>
+              <div className="mt-8 p-6 bg-gray-800 rounded-xl shadow-md border border-gray-700"> {/* Updated background and added border */}
+                <h3 className="text-xl font-bold mb-3 text-green-400"> {/* Updated text color */}Our Promise to You</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <ArrowRight className="h-5 w-5 text-agency-blue mt-0.5" />
-                    <p className="text-gray-700">No high-pressure sales tactics</p>
+                    <ArrowRight className="h-5 w-5 text-green-400 mt-0.5" /> {/* Updated text color */}
+                    <p className="text-gray-200">No high-pressure sales tactics</p> {/* Updated text color */}
                   </li>
                   <li className="flex items-start gap-2">
-                    <ArrowRight className="h-5 w-5 text-agency-blue mt-0.5" />
-                    <p className="text-gray-700">Actionable advice you can use whether you work with us or not</p>
+                    <ArrowRight className="h-5 w-5 text-green-400 mt-0.5" /> {/* Updated text color */}
+                    <p className="text-gray-200">Actionable advice you can use whether you work with us or not</p> {/* Updated text color */}
                   </li>
                   <li className="flex items-start gap-2">
-                    <ArrowRight className="h-5 w-5 text-agency-blue mt-0.5" />
-                    <p className="text-gray-700">60-day money-back guarantee on all our services</p>
+                    <ArrowRight className="h-5 w-5 text-green-400 mt-0.5" /> {/* Updated text color */}
+                    <p className="text-gray-200">60-day money-back guarantee on all our services</p> {/* Updated text color */}
                   </li>
                 </ul>
               </div>
@@ -176,8 +176,8 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="lg:w-1/2"
             >
-              <div className="bg-white rounded-xl p-8 shadow-md">
-                <h3 className="text-2xl font-bold mb-6">Contact Us</h3>
+              <div className="bg-gray-800 rounded-xl p-8 shadow-md border border-gray-700"> {/* Updated background and added border */}
+                <h3 className="text-2xl font-bold mb-6 text-green-400"> {/* Updated text color */}Contact Us</h3>
 
                 {submitted ? (
                   <motion.div
@@ -185,11 +185,11 @@ const Contact = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-12"
                   >
-                    <div className="mx-auto h-16 w-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                      <Check className="h-8 w-8 text-green-600" />
+                    <div className="mx-auto h-16 w-16 bg-green-600 rounded-full flex items-center justify-center mb-4 text-gray-100"> {/* Updated background and text color */}
+                      <Check className="h-8 w-8 text-gray-100" />
                     </div>
-                    <h4 className="text-2xl font-bold mb-3">Message Received!</h4>
-                    <p className="text-gray-700">
+                    <h4 className="text-2xl font-bold mb-3 text-green-400"> {/* Updated text color */}Message Received!</h4>
+                    <p className="text-gray-200"> {/* Updated text color */}
                       Thank you for reaching out. Our team will be in touch with you shortly.
                     </p>
                   </motion.div>
@@ -197,7 +197,7 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-1"> {/* Updated text color */}
                           Full Name*
                         </label>
                         <input
@@ -208,12 +208,13 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="John Smith"
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
+                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
                         />
                       </div>
 
+                      {/* ...rest of form inputs similarly updated */}
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-1"> {/* Updated text color */}
                           Email*
                         </label>
                         <input
@@ -224,14 +225,14 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="john@example.com"
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
+                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
                         />
                       </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-200 mb-1"> {/* Updated text color */}
                           Phone Number
                         </label>
                         <input
@@ -241,12 +242,12 @@ const Contact = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="(123) 456-7890"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
+                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="business" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="business" className="block text-sm font-medium text-gray-200 mb-1"> {/* Updated text color */}
                           Business Name*
                         </label>
                         <input
@@ -257,13 +258,13 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="Your Business LLC"
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
+                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="website" className="block text-sm font-medium text-gray-200 mb-1"> {/* Updated text color */}
                         Website (if applicable)
                       </label>
                       <input
@@ -273,12 +274,12 @@ const Contact = () => {
                         value={formData.website}
                         onChange={handleChange}
                         placeholder="https://your-website.com"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
+                        className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-1"> {/* Updated text color */}
                         How can we help you?*
                       </label>
                       <textarea
@@ -289,17 +290,17 @@ const Contact = () => {
                         rows={4}
                         placeholder="Tell us about your business goals and challenges..."
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
+                        className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
                       />
                     </div>
 
                     <div>
-                      <CtaButton type="submit" className="w-full">
+                      <CtaButton type="submit" className="w-full bg-green-600 hover:bg-green-700 text-gray-100"> {/* Updated colors */}
                         Schedule Your Free Strategy Call
                       </CtaButton>
                     </div>
 
-                    <p className="text-xs text-center text-gray-500">
+                    <p className="text-xs text-center text-gray-300"> {/* Updated text color */}
                       By submitting this form, you agree to our terms of service and privacy policy.
                     </p>
                   </form>
@@ -311,7 +312,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-gray-900"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -320,8 +321,8 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-700">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400"> {/* Updated text color */}Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-200"> {/* Updated text color */}
               Answers to common questions about working with us
             </p>
           </motion.div>
@@ -345,16 +346,16 @@ const Contact = () => {
                 answer: "Not at all! Our services are fully managed, which means we handle all the technical aspects for you. Our goal is to make the process as hands-off as possible so you can focus on running your business."
               }
             ].map((faq, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-50 rounded-lg p-6"
+                className="bg-gray-800 rounded-lg p-6 border border-gray-700 text-gray-200" {/* Updated background, added border, and text color */}
               >
-                <h3 className="font-bold text-xl mb-3">{faq.question}</h3>
-                <p className="text-gray-700">{faq.answer}</p>
+                <h3 className="font-bold text-xl mb-3 text-green-400"> {/* Updated text color */} {faq.question}</h3>
+                <p className="text-gray-200">{faq.answer}</p> {/* Updated text color */}
               </motion.div>
             ))}
           </div>
@@ -362,7 +363,7 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-800"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -371,19 +372,19 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Location</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400"> {/* Updated text color */}Our Location</h2>
           </motion.div>
 
-          <div className="bg-white p-2 rounded-xl shadow-md overflow-hidden">
-            <div className="h-96 w-full bg-gray-200 rounded-lg flex items-center justify-center">
-              <p className="text-gray-600">Map Placeholder</p>
+          <div className="bg-gray-700 p-2 rounded-xl shadow-md overflow-hidden border border-gray-600"> {/* Updated background and added border */}
+            <div className="h-96 w-full bg-gray-600 rounded-lg flex items-center justify-center">
+              <p className="text-gray-200">Map Placeholder</p> {/* Updated text color */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-agency-blue to-agency-indigo text-white">
+      <section className="py-16 bg-gradient-to-r from-green-600 to-green-700 text-gray-100"> {/* Updated background and text color */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -392,16 +393,16 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to 4x Your Business in 90 Days?</h2>
-            <p className="text-xl mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6"> {/* Updated text color */}Ready to 4x Your Business in 90 Days?</h2>
+            <p className="text-xl mb-8"> {/* Updated text color */}
               Schedule your free strategy call today and let's create your custom growth plan.
             </p>
-            <CtaButton size="lg" className="bg-white text-agency-blue hover:bg-opacity-90" onClick={() => {
+            <CtaButton size="lg" className="bg-gray-800 text-green-400 hover:bg-gray-700" onClick={() => {
               window.scrollTo({
                 top: 600,
                 behavior: "smooth",
               });
-            }}>
+            }}> {/* Updated colors */}
               Get Started Now
             </CtaButton>
           </motion.div>

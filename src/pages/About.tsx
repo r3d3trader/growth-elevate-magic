@@ -9,32 +9,32 @@ const About = () => {
   // Define core values
   const values = [
     {
-      icon: <Lightbulb className="h-8 w-8 text-amber-500" />,
+      icon: <Lightbulb className="h-8 w-8 text-green-400" />,
       title: "Innovation",
       description: "Delivering modern, transformative solutions that keep our clients ahead of the curve."
     },
     {
-      icon: <MessageCircle className="h-8 w-8 text-blue-500" />,
+      icon: <MessageCircle className="h-8 w-8 text-green-400" />,
       title: "Transparency",
       description: "Clear communication and detailed reporting so you always know where things stand."
     },
     {
-      icon: <Users className="h-8 w-8 text-purple-500" />,
+      icon: <Users className="h-8 w-8 text-green-400" />,
       title: "Collaboration",
       description: "Merging our expertise with your vision to create solutions that truly reflect your business."
     },
     {
-      icon: <Award className="h-8 w-8 text-red-500" />,
+      icon: <Award className="h-8 w-8 text-green-400" />,
       title: "Accountability",
       description: "Standing firmly behind our commitments with our 60-day money-back guarantee."
     },
     {
-      icon: <ShieldCheck className="h-8 w-8 text-green-500" />,
+      icon: <ShieldCheck className="h-8 w-8 text-green-400" />,
       title: "Simplicity",
       description: "Fully managed services with no setup hassles, letting you focus on running your business."
     },
     {
-      icon: <Zap className="h-8 w-8 text-yellow-500" />,
+      icon: <Zap className="h-8 w-8 text-green-400" />,
       title: "Performance",
       description: "Delivering measurable results and continuous improvement to maximize your ROI."
     }
@@ -77,28 +77,28 @@ const About = () => {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-gradient-to-b from-agency-blue-50 to-white">
+      <section className="pt-28 pb-16 bg-gradient-to-b from-[#1a1a1a] to-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto"
+            className="text-center max-w-4xl mx-auto text-white" {/* Added text-white */}
           >
             <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
               <span className="text-gradient">About Leads Obtainer</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8">
+            <p className="text-lg md:text-xl mb-8">
               Empowering Local Businesses to 4x Growth in 90 Days Through Results-Driven, Done-For-You Solutions
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <CtaButton size="lg">
+                <CtaButton size="lg" className="bg-green-500 hover:bg-green-600"> {/* Updated button color */}
                   Get in Touch
                 </CtaButton>
               </Link>
               <Link to="/services">
-                <CtaButton variant="secondary" size="lg">
+                <CtaButton variant="secondary" size="lg" className="bg-gray-800 hover:bg-gray-700 text-white"> {/* Updated button color */}
                   Explore Our Services
                 </CtaButton>
               </Link>
@@ -108,7 +108,7 @@ const About = () => {
       </section>
 
       {/* Company Overview Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
             <motion.div
@@ -116,16 +116,16 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="lg:w-1/2"
+              className="lg:w-1/2 text-white" {/* Added text-white */}
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-lg mb-6">
                 Leads Obtainer was founded with a singular mission: to provide local businesses with the same advanced marketing and automation technologies that large corporations use, without the complexity or high costs.
               </p>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-lg mb-6">
                 We accelerate business growth with cutting-edge digital marketing, automation, and technology—all delivered as fully managed services with a 60-day money-back guarantee.
               </p>
-              <p className="text-lg text-gray-700">
+              <p className="text-lg">
                 Our team of experts handles everything from website development to lead generation and sales automation, allowing you to focus on what you do best—running your business and serving your customers.
               </p>
             </motion.div>
@@ -137,8 +137,8 @@ const About = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="lg:w-1/2"
             >
-              <div className="bg-gray-200 rounded-lg h-80 flex items-center justify-center">
-                <p className="text-gray-500 font-medium">Company Image</p>
+              <div className="bg-gray-800 rounded-lg h-80 flex items-center justify-center text-white"> {/* Updated background and text color */}
+                <p className="font-medium">Company Image</p>
               </div>
             </motion.div>
           </div>
@@ -146,14 +146,14 @@ const About = () => {
       </section>
 
       {/* Mission and Vision Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
+            className="text-center max-w-4xl mx-auto mb-12 text-white" {/* Added text-white */}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission & Vision</h2>
           </motion.div>
@@ -164,10 +164,10 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-xl p-8 shadow-md"
+              className="bg-gray-800 rounded-xl p-8 shadow-md text-white" {/* Updated background and text color */}
             >
-              <h3 className="text-2xl font-bold mb-4 text-agency-blue">Mission</h3>
-              <p className="text-lg text-gray-700">
+              <h3 className="text-2xl font-bold mb-4">Mission</h3>
+              <p>
                 Provide technology-driven, hassle-free marketing and automation solutions for rapid, sustainable growth that allows businesses to thrive without technical burdens.
               </p>
             </motion.div>
@@ -177,10 +177,10 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-xl p-8 shadow-md"
+              className="bg-gray-800 rounded-xl p-8 shadow-md text-white" {/* Updated background and text color */}
             >
-              <h3 className="text-2xl font-bold mb-4 text-agency-indigo">Vision</h3>
-              <p className="text-lg text-gray-700">
+              <h3 className="text-2xl font-bold mb-4">Vision</h3>
+              <p>
                 Become the trusted partner for local businesses worldwide, enabling scalable growth through innovative technology solutions that level the playing field against larger competitors.
               </p>
             </motion.div>
@@ -189,17 +189,17 @@ const About = () => {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
+            className="text-center max-w-4xl mx-auto mb-12 text-white" {/* Added text-white */}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
-            <p className="text-lg text-gray-700">
+            <p>
               The principles that guide everything we do
             </p>
           </motion.div>
@@ -212,11 +212,11 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300"
+                className="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 text-white" {/* Updated background and text color */}
               >
                 <div className="mb-4">{value.icon}</div>
                 <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                <p className="text-gray-700">{value.description}</p>
+                <p>{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -224,17 +224,17 @@ const About = () => {
       </section>
 
       {/* Company Milestones */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
+            className="text-center max-w-4xl mx-auto mb-12 text-white" {/* Added text-white */}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Journey</h2>
-            <p className="text-lg text-gray-700">
+            <p>
               Key milestones in our company's history
             </p>
           </motion.div>
@@ -247,16 +247,16 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex mb-8 last:mb-0"
+                className="flex mb-8 last:mb-0 text-white" {/* Added text-white */}
               >
                 <div className="mr-4 md:mr-8">
-                  <div className="bg-agency-blue text-white text-xl font-bold w-16 h-16 rounded-full flex items-center justify-center">
+                  <div className="bg-green-500 text-white text-xl font-bold w-16 h-16 rounded-full flex items-center justify-center"> {/* Updated background color */}
                     {milestone.year}
                   </div>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2">{milestone.title}</h3>
-                  <p className="text-gray-700">{milestone.description}</p>
+                  <p>{milestone.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -265,7 +265,7 @@ const About = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 bg-agency-blue-50">
+      <section className="py-16 bg-gray-800 text-white"> {/* Updated background and text color */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -275,7 +275,7 @@ const About = () => {
             className="text-center max-w-4xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Leads Obtainer?</h2>
-            <p className="text-lg text-gray-700">
+            <p>
               What sets us apart from other agencies
             </p>
           </motion.div>
@@ -297,10 +297,10 @@ const About = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex items-start gap-3"
               >
-                <div className="bg-green-100 rounded-full p-1 mt-1">
-                  <Check className="h-5 w-5 text-green-600" />
+                <div className="bg-green-500 rounded-full p-1 mt-1"> {/* Updated background color */}
+                  <Check className="h-5 w-5 text-white" /> {/* Updated text color */}
                 </div>
-                <p className="text-gray-700 font-medium">{point}</p>
+                <p className="font-medium">{point}</p>
               </motion.div>
             ))}
           </div>
@@ -308,7 +308,7 @@ const About = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-agency-blue to-agency-indigo text-white">
+      <section className="py-16 bg-gradient-to-r from-green-500 to-green-700 text-white"> {/* Updated background color */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -323,12 +323,12 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <CtaButton size="lg" className="bg-white text-agency-blue hover:bg-opacity-90">
+                <CtaButton size="lg" className="bg-white text-green-500 hover:bg-opacity-90"> {/* Updated button color */}
                   Contact Us Today
                 </CtaButton>
               </Link>
               <Link to="/services">
-                <CtaButton variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-agency-blue">
+                <CtaButton variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-green-500"> {/* Updated button color */}
                   Explore Our Services
                 </CtaButton>
               </Link>

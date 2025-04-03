@@ -127,7 +127,7 @@ const Services = () => {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-gradient-to-b from-agency-blue-50 to-white">
+      <section className="pt-28 pb-16 bg-gradient-to-b from-[#1a1a1a] to-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -135,20 +135,20 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-green-400"> {/* Updated text color */}
               <span className="text-gradient">Our Services</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8">
+            <p className="text-lg md:text-xl text-gray-300 mb-8"> {/* Updated text color */}
               We provide comprehensive, done-for-you solutions to 4x your business growth in 90 days—guaranteed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <CtaButton size="lg">
+                <CtaButton size="lg" className="bg-green-400 text-black hover:bg-green-500"> {/* Updated button style */}
                   Get Your Free Strategy Call
                 </CtaButton>
               </Link>
               <Link to="/pricing">
-                <CtaButton variant="secondary" size="lg">
+                <CtaButton variant="secondary" size="lg" className="bg-gray-800 text-green-400 hover:bg-gray-700"> {/* Updated button style */}
                   View Our Pricing
                 </CtaButton>
               </Link>
@@ -158,7 +158,7 @@ const Services = () => {
       </section>
 
       {/* Service Categories Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -166,8 +166,8 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Service Offerings</h2>
-            <p className="text-lg text-gray-700">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400"> {/* Updated text color */}Our Service Offerings</h2>
+            <p className="text-lg text-gray-300"> {/* Updated text color */}
               Comprehensive solutions designed to accelerate your business growth
             </p>
           </motion.div>
@@ -181,14 +181,14 @@ const Services = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <Card className="h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-lg bg-gray-800 border border-gray-700"> {/* Updated card style */}
                   <CardHeader>
-                    <div className="text-4xl mb-2">{category.icon}</div>
-                    <CardTitle>{category.name}</CardTitle>
-                    <CardDescription>{category.description}</CardDescription>
+                    <div className="text-4xl mb-2 text-green-400">{category.icon}</div> {/* Updated text color */}
+                    <CardTitle className="text-green-400">{category.name}</CardTitle> {/* Updated text color */}
+                    <CardDescription className="text-gray-300">{category.description}</CardDescription> {/* Updated text color */}
                   </CardHeader>
                   <CardContent>
-                    <Link to="/contact" className="text-agency-blue hover:text-agency-indigo flex items-center gap-2 transition-colors">
+                    <Link to="/contact" className="text-green-400 hover:text-green-500 flex items-center gap-2 transition-colors"> {/* Updated link color */}
                       <span>Learn more</span>
                       <ArrowRight className="h-4 w-4" />
                     </Link>
@@ -201,7 +201,7 @@ const Services = () => {
       </section>
 
       {/* Services Table Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -210,21 +210,21 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Service Details</h2>
-            <p className="text-lg text-gray-700">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400"> {/* Updated text color */}Service Details</h2>
+            <p className="text-lg text-gray-300"> {/* Updated text color */}
               Explore our comprehensive suite of services designed to accelerate your business growth
             </p>
           </motion.div>
 
-          <div className="overflow-x-auto bg-white rounded-xl shadow-md">
+          <div className="overflow-x-auto bg-gray-800 rounded-xl shadow-md border border-gray-700"> {/* Updated table style */}
             <table className="w-full">
-              <thead className="bg-agency-blue text-white">
+              <thead className="bg-green-400 text-black"> {/* Updated header style */}
                 <tr>
                   <th className="px-6 py-4 text-left">Service</th>
                   <th className="px-6 py-4 text-left">Description</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-gray-700"> {/* Updated divider color */}
                 {services.map((service, index) => (
                   <motion.tr 
                     key={index}
@@ -232,7 +232,7 @@ const Services = () => {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.2, delay: index * 0.03 }}
-                    className="hover:bg-gray-50"
+                    className="hover:bg-gray-700 text-gray-300" {/* Updated row style */}
                   >
                     <td className="px-6 py-4 font-medium">{service.name}</td>
                     <td className="px-6 py-4">{service.description}</td>
@@ -250,7 +250,7 @@ const Services = () => {
             className="text-center mt-10"
           >
             <Link to="/pricing">
-              <CtaButton>
+              <CtaButton className="bg-green-400 text-black hover:bg-green-500"> {/* Updated button style */}
                 See Our Service Packages
               </CtaButton>
             </Link>
@@ -259,7 +259,7 @@ const Services = () => {
       </section>
 
       {/* Our Approach Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -268,8 +268,8 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Approach & Methodology</h2>
-            <p className="text-lg text-gray-700">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400"> {/* Updated text color */}Our Approach & Methodology</h2>
+            <p className="text-lg text-gray-300"> {/* Updated text color */}
               How we deliver exceptional results for our clients
             </p>
           </motion.div>
@@ -282,15 +282,15 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-700 text-gray-300" {/* Updated card style */}
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-agency-blue-50 text-agency-blue font-bold rounded-full h-10 w-10 flex items-center justify-center">
+                  <div className="bg-green-400 text-black font-bold rounded-full h-10 w-10 flex items-center justify-center"> {/* Updated step style */}
                     {index + 1}
                   </div>
-                  <h3 className="font-bold text-xl">{step.title}</h3>
+                  <h3 className="font-bold text-xl text-green-400">{step.title}</h3> {/* Updated text color */}
                 </div>
-                <p className="text-gray-700">{step.description}</p>
+                <p className="text-gray-300">{step.description}</p> {/* Updated text color */}
               </motion.div>
             ))}
           </div>
@@ -298,7 +298,7 @@ const Services = () => {
       </section>
 
       {/* Competitive Advantage Section */}
-      <section className="py-16 bg-agency-blue-50">
+      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -307,8 +307,8 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Competitive Advantage</h2>
-            <p className="text-lg text-gray-700">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400"> {/* Updated text color */}Our Competitive Advantage</h2>
+            <p className="text-lg text-gray-300"> {/* Updated text color */}
               What sets us apart from other agencies
             </p>
           </motion.div>
@@ -321,15 +321,15 @@ const Services = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md"
+                className="bg-gray-800 rounded-xl p-6 shadow-md border border-gray-700 text-gray-300" {/* Updated card style */}
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="bg-green-100 rounded-full p-1">
-                    <Check className="h-5 w-5 text-green-600" />
+                  <div className="bg-green-400 rounded-full p-1"> {/* Updated checkmark style */}
+                    <Check className="h-5 w-5 text-black" />
                   </div>
-                  <h3 className="font-bold text-xl">{advantage.title}</h3>
+                  <h3 className="font-bold text-xl text-green-400">{advantage.title}</h3> {/* Updated text color */}
                 </div>
-                <p className="text-gray-700 pl-9">{advantage.description}</p>
+                <p className="text-gray-300 pl-9">{advantage.description}</p> {/* Updated text color */}
               </motion.div>
             ))}
           </div>
@@ -337,7 +337,7 @@ const Services = () => {
       </section>
 
       {/* Success Stories Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -346,8 +346,8 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Client Success Stories</h2>
-            <p className="text-lg text-gray-700">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400"> {/* Updated text color */}Client Success Stories</h2>
+            <p className="text-lg text-gray-300"> {/* Updated text color */}
               Businesses Like Yours Are Achieving 4X Growth—Here's How!
             </p>
           </motion.div>
@@ -360,11 +360,11 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-gray-800 rounded-xl p-6 border border-gray-700 shadow-md hover:shadow-lg transition-all duration-300 text-gray-300" {/* Updated card style */}
               >
-                <h3 className="font-bold text-xl mb-3 text-agency-blue">{story.title}</h3>
-                <p className="text-gray-700 mb-4">{story.description}</p>
-                <Link to="/contact" className="text-agency-blue hover:text-agency-indigo flex items-center gap-2 transition-colors">
+                <h3 className="font-bold text-xl mb-3 text-green-400">{story.title}</h3> {/* Updated text color */}
+                <p className="text-gray-300 mb-4">{story.description}</p> {/* Updated text color */}
+                <Link to="/contact" className="text-green-400 hover:text-green-500 flex items-center gap-2 transition-colors"> {/* Updated link color */}
                   <span>Read full case study</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -375,7 +375,7 @@ const Services = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-agency-blue to-agency-indigo text-white">
+      <section className="py-16 bg-gradient-to-r from-green-400 to-green-500 text-black"> {/* Updated background and text color */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -390,12 +390,12 @@ const Services = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <CtaButton size="lg" className="bg-white text-agency-blue hover:bg-opacity-90">
+                <CtaButton size="lg" className="bg-black text-green-400 hover:bg-gray-800"> {/* Updated button style */}
                   Get Your Free Growth Plan
                 </CtaButton>
               </Link>
               <Link to="/pricing">
-                <CtaButton variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-agency-blue">
+                <CtaButton variant="outline" size="lg" className="border-black text-black hover:bg-green-400 hover:text-black"> {/* Updated button style */}
                   View Pricing Plans
                 </CtaButton>
               </Link>

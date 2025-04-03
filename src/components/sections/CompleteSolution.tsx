@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Check, Rocket } from "lucide-react";
@@ -24,18 +23,18 @@ const CompleteSolution: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-neon-green">
               The Complete Solution for Local Business Growth
             </h2>
-            
-            <p className="text-xl font-semibold text-agency-blue mb-4">
+
+            <p className="text-xl font-semibold text-neon-green mb-4">
               From Online Brochure to Automated Sales Machine
             </p>
-            
-            <p className="text-lg text-gray-700 mb-8">
+
+            <p className="text-lg text-gray-300 mb-8">
               Most websites just sit there, looking good but doing nothing. We transform yours into a 24/7 sales and marketing system that works for you.
             </p>
-            
+
             <div className="space-y-4 mb-8">
               {features.map((feature, index) => (
                 <motion.div 
@@ -46,23 +45,23 @@ const CompleteSolution: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                 >
-                  <div className="bg-green-100 rounded-full p-1 mt-1 flex-shrink-0">
-                    <Check className="h-5 w-5 text-green-600" />
+                  <div className="bg-neon-green-lighter rounded-full p-1 mt-1 flex-shrink-0">
+                    <Check className="h-5 w-5 text-black" />
                   </div>
-                  <p className="text-gray-700">{feature}</p>
+                  <p className="text-gray-300">{feature}</p>
                 </motion.div>
               ))}
             </div>
-            
+
             <CtaButton 
               size="lg"
-              className="group"
+              className="bg-neon-green text-black hover:bg-neon-green-darker group"
             >
-              <Rocket className="h-5 w-5 group-hover:animate-bounce" />
+              <Rocket className="h-5 w-5 text-black group-hover:animate-bounce" />
               Let's turn your website into a growth engine!
             </CtaButton>
           </motion.div>
-          
+
           <motion.div 
             className="flex-1"
             initial={{ opacity: 0, x: 30 }}
@@ -71,8 +70,7 @@ const CompleteSolution: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="relative">
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-agency-blue-50 rounded-lg z-0"></div>
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-agency-indigo-50 rounded-lg z-0"></div>
+              {/* Removed colored divs */}
               <img
                 src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="Automated business growth system"

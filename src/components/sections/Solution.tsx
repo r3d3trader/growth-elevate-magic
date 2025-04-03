@@ -6,7 +6,7 @@ import CtaButton from "@/components/ui/cta-button";
 
 const Solution = () => {
   return (
-    <section className="py-20 bg-card">
+    <section className="py-20 bg-agency-dark-lighter">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
