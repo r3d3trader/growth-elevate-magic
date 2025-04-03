@@ -185,7 +185,7 @@ const Pricing = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-10 md:py-20 bg-white">
+      <section className="py-10 md:py-20" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {plans.map((plan, index) => (

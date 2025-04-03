@@ -14,7 +14,7 @@ const CompleteSolution: React.FC = () => {
   ];
 
   return (
-    <section className="section-padding py-16 bg-white">
+    <section className="section-padding py-16" style={{ backgroundColor: '#1a1a1a' }}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
           <motion.div 

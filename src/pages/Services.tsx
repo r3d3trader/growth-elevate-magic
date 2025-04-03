@@ -1,4 +1,3 @@
-
 import React from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import { motion } from "framer-motion";
@@ -159,7 +158,7 @@ const Services = () => {
       </section>
 
       {/* Service Categories Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -202,7 +201,7 @@ const Services = () => {
       </section>
 
       {/* Services Table Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -260,7 +259,7 @@ const Services = () => {
       </section>
 
       {/* Our Approach Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -338,7 +337,7 @@ const Services = () => {
       </section>
 
       {/* Success Stories Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

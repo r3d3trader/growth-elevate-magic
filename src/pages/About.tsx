@@ -1,4 +1,3 @@
-
 import React from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import { motion } from "framer-motion";
@@ -109,7 +108,7 @@ const About = () => {
       </section>
 
       {/* Company Overview Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
             <motion.div
@@ -130,7 +129,7 @@ const About = () => {
                 Our team of experts handles everything from website development to lead generation and sales automation, allowing you to focus on what you do best—running your business and serving your customers.
               </p>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -147,7 +146,7 @@ const About = () => {
       </section>
 
       {/* Mission and Vision Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -190,7 +189,7 @@ const About = () => {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -225,7 +224,7 @@ const About = () => {
       </section>
 
       {/* Company Milestones */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

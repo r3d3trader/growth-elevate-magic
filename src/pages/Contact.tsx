@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import { motion } from "framer-motion";
@@ -34,7 +33,7 @@ const Contact = () => {
       duration: 5000,
     });
     setSubmitted(true);
-    
+
     // Reset form after showing success state
     setTimeout(() => {
       setFormData({
@@ -92,7 +91,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Info Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             {contactInfo.map((item, index) => (
@@ -120,7 +119,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             <motion.div
@@ -134,7 +133,7 @@ const Contact = () => {
               <p className="text-lg text-gray-700 mb-6">
                 Fill out the form to schedule your free, no-obligation strategy call with one of our growth experts. We'll discuss your business goals and create a custom plan to help you achieve them.
               </p>
-              
+
               <div className="space-y-6">
                 {[
                   "Discover untapped growth opportunities for your business",
@@ -150,7 +149,7 @@ const Contact = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="mt-8 p-6 bg-white rounded-xl shadow-md">
                 <h3 className="text-xl font-bold mb-3">Our Promise to You</h3>
                 <ul className="space-y-3">
@@ -169,7 +168,7 @@ const Contact = () => {
                 </ul>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -179,7 +178,7 @@ const Contact = () => {
             >
               <div className="bg-white rounded-xl p-8 shadow-md">
                 <h3 className="text-2xl font-bold mb-6">Contact Us</h3>
-                
+
                 {submitted ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -212,7 +211,7 @@ const Contact = () => {
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
                         />
                       </div>
-                      
+
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                           Email*
@@ -229,7 +228,7 @@ const Contact = () => {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
@@ -245,7 +244,7 @@ const Contact = () => {
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
                         />
                       </div>
-                      
+
                       <div>
                         <label htmlFor="business" className="block text-sm font-medium text-gray-700 mb-1">
                           Business Name*
@@ -262,7 +261,7 @@ const Contact = () => {
                         />
                       </div>
                     </div>
-                    
+
                     <div>
                       <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-1">
                         Website (if applicable)
@@ -277,7 +276,7 @@ const Contact = () => {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
                       />
                     </div>
-                    
+
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                         How can we help you?*
@@ -293,13 +292,13 @@ const Contact = () => {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agency-blue focus:border-agency-blue transition-colors"
                       />
                     </div>
-                    
+
                     <div>
                       <CtaButton type="submit" className="w-full">
                         Schedule Your Free Strategy Call
                       </CtaButton>
                     </div>
-                    
+
                     <p className="text-xs text-center text-gray-500">
                       By submitting this form, you agree to our terms of service and privacy policy.
                     </p>
@@ -312,7 +311,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
