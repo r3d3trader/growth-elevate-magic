@@ -1,10 +1,9 @@
-
 import React from "react";
-import PageLayout from "@/components/layout/PageLayout";
 import { motion } from "framer-motion";
 import CtaButton from "@/components/ui/cta-button";
 import { Check, Briefcase, Heart, Star, TrendingUp, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import PageLayout from "@/components/layout/PageLayout";
 
 const About = () => {
   const values = [
@@ -29,7 +28,7 @@ const About = () => {
       description: "We strive for the highest standards in everything we do."
     }
   ];
-  
+
   const timeline = [
     {
       year: "2020",
@@ -113,7 +112,7 @@ const About = () => {
                 </p>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -171,7 +170,7 @@ const About = () => {
                 ))}
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
