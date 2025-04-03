@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Search, Settings, TrendingUp } from "lucide-react";
@@ -48,11 +49,11 @@ const Process: React.FC<ProcessProps> = ({ onSubmit }) => {
   };
 
   return (
-    <section className="section-padding" style={{ backgroundColor: '#1a1a1a' }}> {/* Background color updated */}
+    <section className="section-padding" style={{ backgroundColor: '#1a1a1a' }}>
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6 text-white"  {/* Text color updated */}
+            className="text-3xl md:text-4xl font-bold mb-6 text-white"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -62,7 +63,7 @@ const Process: React.FC<ProcessProps> = ({ onSubmit }) => {
           </motion.h2>
 
           <motion.p 
-            className="text-lg text-gray-300" {/* Text color updated */}
+            className="text-lg text-gray-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -82,25 +83,25 @@ const Process: React.FC<ProcessProps> = ({ onSubmit }) => {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              className="bg-black rounded-xl shadow-custom p-8 shadow-custom-hover transition-all duration-300 hover:-translate-y-2 border border-gray-600" {/* Added border and updated background */}
+              className="bg-black rounded-xl shadow-custom p-8 shadow-custom-hover transition-all duration-300 hover:-translate-y-2 border border-gray-600"
               variants={itemVariants}
             >
               <div className={`h-16 w-16 rounded-2xl bg-gradient-to-r ${step.color} flex items-center justify-center mb-6`}>
                 {step.icon}
               </div>
               <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-green-500 text-white font-bold text-lg"> {/* Updated color */}
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-green-500 text-white font-bold text-lg">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-bold text-white"> {/* Text color updated */} {step.title}</h3>
+                <h3 className="text-xl font-bold text-white">{step.title}</h3>
               </div>
-              <p className="text-gray-300"> {/* Text color updated */} {step.description}</p>
+              <p className="text-gray-300">{step.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
         <motion.div 
-          className="max-w-2xl mx-auto text-center text-white" {/* Text color updated */}
+          className="max-w-2xl mx-auto text-center text-white"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -111,9 +112,9 @@ const Process: React.FC<ProcessProps> = ({ onSubmit }) => {
             <input
               type="text"
               placeholder="Enter your phone number"
-              className="px-6 py-3 rounded-lg border border-gray-300 flex-grow max-w-xs focus:outline-none focus:ring-2 focus:ring-green-500 text-white bg-black" {/* Updated styles */}
+              className="px-6 py-3 rounded-lg border border-gray-300 flex-grow max-w-xs focus:outline-none focus:ring-2 focus:ring-green-500 text-white bg-black"
             />
-            <CtaButton type="submit" size="lg" className="bg-green-500 hover:bg-green-700 text-white"> {/* Updated styles */}
+            <CtaButton type="submit" size="lg" className="bg-green-500 hover:bg-green-700 text-white">
               Claim Your Free Strategy Call
             </CtaButton>
           </form>
