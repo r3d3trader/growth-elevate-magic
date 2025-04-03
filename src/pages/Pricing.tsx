@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import PageLayout from "@/components/layout/PageLayout";
 import { motion } from "framer-motion";
 import CtaButton from "@/components/ui/cta-button";
 import { Check, HelpCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import PageLayout from "@/components/layout/PageLayout";
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);

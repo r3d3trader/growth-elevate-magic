@@ -1,11 +1,10 @@
-
 import React, { useState } from "react";
-import PageLayout from "@/components/layout/PageLayout";
 import { motion } from "framer-motion";
 import CtaButton from "@/components/ui/cta-button";
 import { Mail, Phone, MapPin, Check, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import PageLayout from "@/components/layout/PageLayout"; // Moved this line to the bottom
 
 const Contact = () => {
   const { toast } = useToast();
