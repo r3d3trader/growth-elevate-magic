@@ -1,5 +1,6 @@
+
 import React, { useEffect } from "react";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import Navbar from "./Navbar";
 import Footer from "@/components/sections/Footer";
 import { motion } from "framer-motion";

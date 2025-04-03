@@ -1,9 +1,11 @@
+
 import React, { useState } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import { motion } from "framer-motion";
 import CtaButton from "@/components/ui/cta-button";
 import { Mail, Phone, MapPin, Check, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -100,7 +102,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center border border-gray-700" {/* Updated background and added border */}
+                className="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center border border-gray-700" /* Updated background and added border */
               >
                 <div className="bg-green-600 p-3 rounded-full mb-4 text-gray-100"> {/* Updated background and text color */}
                   {item.icon}
@@ -108,7 +110,7 @@ const Contact = () => {
                 <h3 className="text-xl font-bold mb-2 text-green-400"> {/* Updated text color */} {item.title}</h3>
                 <a
                   href={item.link}
-                  className="text-gray-200 hover:text-green-400 transition-colors" {/* Updated text color */}
+                  className="text-gray-200 hover:text-green-400 transition-colors" /* Updated text color */
                 >
                   {item.content}
                 </a>
@@ -208,11 +210,10 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="John Smith"
                           required
-                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
+                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" /* Updated colors and background */
                         />
                       </div>
 
-                      {/* ...rest of form inputs similarly updated */}
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-1"> {/* Updated text color */}
                           Email*
@@ -225,7 +226,7 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="john@example.com"
                           required
-                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
+                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" /* Updated colors and background */
                         />
                       </div>
                     </div>
@@ -242,7 +243,7 @@ const Contact = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="(123) 456-7890"
-                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
+                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" /* Updated colors and background */
                         />
                       </div>
 
@@ -258,7 +259,7 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="Your Business LLC"
                           required
-                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
+                          className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" /* Updated colors and background */
                         />
                       </div>
                     </div>
@@ -274,7 +275,7 @@ const Contact = () => {
                         value={formData.website}
                         onChange={handleChange}
                         placeholder="https://your-website.com"
-                        className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
+                        className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" /* Updated colors and background */
                       />
                     </div>
 
@@ -290,7 +291,7 @@ const Contact = () => {
                         rows={4}
                         placeholder="Tell us about your business goals and challenges..."
                         required
-                        className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" {/* Updated colors and background */}
+                        className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-colors bg-gray-800 text-gray-200" /* Updated colors and background */
                       />
                     </div>
 
@@ -352,7 +353,7 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-800 rounded-lg p-6 border border-gray-700 text-gray-200" {/* Updated background, added border, and text color */}
+                className="bg-gray-800 rounded-lg p-6 border border-gray-700 text-gray-200" /* Updated background, added border, and text color */
               >
                 <h3 className="font-bold text-xl mb-3 text-green-400"> {/* Updated text color */} {faq.question}</h3>
                 <p className="text-gray-200">{faq.answer}</p> {/* Updated text color */}
