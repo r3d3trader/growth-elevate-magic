@@ -1,50 +1,45 @@
 
 import React from "react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
 
 interface CtaButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline";
-  size?: "sm" | "md" | "lg";
-  icon?: boolean;
+  size?: "default" | "sm" | "lg";
+  variant?: "default" | "outline" | "secondary";
+  children: React.ReactNode;
 }
 
-const CtaButton: React.FC<CtaButtonProps> = ({
+const CtaButton = ({
+  size = "default",
+  variant = "default",
   className,
-  variant = "primary",
-  size = "md",
   children,
-  icon = true,
   ...props
-}) => {
-  const variantClasses = {
-    primary:
-      "bg-gradient-to-r from-agency-blue to-agency-indigo text-white hover:shadow-lg hover:shadow-agency-blue/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1",
-    secondary:
-      "bg-white text-agency-blue shadow-md border border-agency-blue/20 hover:border-agency-blue hover:shadow-lg hover:shadow-agency-blue/10 transition-all duration-300 ease-in-out transform hover:-translate-y-1",
-    outline:
-      "bg-transparent border border-agency-blue text-agency-blue hover:bg-agency-blue/5 transition-all duration-300 ease-in-out",
+}: CtaButtonProps) => {
+  const buttonStyles = {
+    default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-custom",
+    outline: "border border-primary bg-transparent text-primary hover:bg-primary/10",
+    secondary: "bg-card border border-primary/30 hover:border-primary text-foreground",
   };
 
-  const sizeClasses = {
-    sm: "py-2 px-4 text-sm font-medium rounded-md",
-    md: "py-3 px-6 text-base font-medium rounded-lg",
-    lg: "py-4 px-8 text-lg font-medium rounded-lg",
+  const sizeStyles = {
+    default: "py-2.5 px-6 text-sm",
+    sm: "py-2 px-4 text-xs",
+    lg: "py-3 px-8 text-base",
   };
 
   return (
-    <button
+    <Button
       className={cn(
-        variantClasses[variant],
-        sizeClasses[size],
-        "flex items-center justify-center gap-2 font-semibold animate-fade-in",
+        "rounded-full font-medium transition-all duration-300 shadow-custom-hover",
+        buttonStyles[variant],
+        sizeStyles[size],
         className
       )}
       {...props}
     >
-      <span>{children}</span>
-      {icon && <ArrowRight className="h-4 w-4" />}
-    </button>
+      {children}
+    </Button>
   );
 };
 

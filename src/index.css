@@ -1,51 +1,52 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --background: 0 0% 10%;
+    --foreground: 60 100% 98%;
+    --card: 0 0% 13%;
+    --card-foreground: 60 100% 98%;
+    --popover: 0 0% 13%;
+    --popover-foreground: 60 100% 98%;
+    --primary: 68 100% 60%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 60 100% 98%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 60 9% 80%;
+    --accent: 68 100% 50%;
+    --accent-foreground: 0 0% 10%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --destructive-foreground: 60 100% 98%;
+    --border: 68 100% 60%;
+    --input: 0 0% 18%;
+    --ring: 68 100% 50%;
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --background: 0 0% 10%;
+    --foreground: 60 100% 98%;
+    --card: 0 0% 13%;
+    --card-foreground: 60 100% 98%;
+    --popover: 0 0% 13%;
+    --popover-foreground: 60 100% 98%;
+    --primary: 68 100% 60%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 60 100% 98%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 60 9% 80%;
+    --accent: 68 100% 50%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 100% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 68 100% 50%;
   }
 }
 
@@ -61,11 +62,11 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-agency-blue via-agency-indigo to-agency-purple bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-primary to-primary bg-clip-text text-transparent;
   }
   
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-12 md:py-20;
   }
   
   .reveal-from-bottom {
@@ -98,7 +99,7 @@
   }
   
   .shadow-custom {
-    box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.12), 0 4px 8px -2px rgba(37, 99, 235, 0.06);
+    box-shadow: 0 0 20px rgba(198, 255, 0, 0.3);
   }
   
   .shadow-custom-hover {
@@ -106,37 +107,49 @@
   }
   
   .shadow-custom-hover:hover {
-    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.15), 0 8px 16px -6px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 25px rgba(198, 255, 0, 0.5);
     transform: translateY(-3px);
   }
   
-  /* Modern card styles */
-  .modern-card {
-    @apply bg-white rounded-xl p-6 shadow-lg border border-gray-100/60 transition-all duration-300;
+  .neon-border {
+    border: 1px solid hsl(var(--primary));
+    box-shadow: 0 0 10px rgba(198, 255, 0, 0.3);
   }
   
-  .modern-card:hover {
-    @apply shadow-xl border-gray-100;
+  .neon-glow {
+    text-shadow: 0 0 5px rgba(198, 255, 0, 0.7);
+  }
+
+  .neon-box {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid hsl(var(--primary));
+    box-shadow: 0 0 15px rgba(198, 255, 0, 0.4);
   }
   
-  /* Clean button styles */
-  .clean-button {
-    @apply rounded-lg px-5 py-2.5 font-medium transition-all duration-300;
+  .stat-card {
+    @apply flex flex-col items-center p-4 rounded-lg neon-border bg-card;
   }
   
-  /* Subtle hover effects */
-  .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-3px);
+  .feature-icon {
+    @apply w-12 h-12 flex items-center justify-center rounded-full bg-primary text-primary-foreground mb-4;
   }
 }
 
 @layer components {
   .btn {
     @apply rounded-lg px-5 py-2.5 font-medium transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-custom-hover;
+  }
+
+  .btn-outline {
+    @apply border border-primary bg-transparent text-primary hover:bg-primary/10 shadow-custom-hover;
+  }
+
+  .btn-card {
+    @apply bg-card border border-primary/30 hover:border-primary text-foreground shadow-custom-hover;
   }
 
   /* Smooth animations */
@@ -156,22 +169,22 @@
 
   .hover-lift:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(198, 255, 0, 0.3);
   }
 
   /* Modern card styles */
   .modern-card {
-    @apply rounded-xl bg-white p-6 shadow-sm transition-all duration-300;
-    border: 1px solid rgba(0,0,0,0.05);
+    @apply bg-card rounded-xl p-6 shadow-sm transition-all duration-300 border border-primary/30;
   }
 
   .modern-card:hover {
-    box-shadow: 0 15px 30px -15px rgba(0,0,0,0.1);
+    @apply border-primary;
+    box-shadow: 0 0 15px rgba(198, 255, 0, 0.3);
   }
 
   /* Clean navigation */
   .nav-link {
-    @apply relative px-3 py-2 font-medium text-gray-700 transition-colors;
+    @apply relative px-3 py-2 font-medium text-foreground transition-colors;
   }
 
   .nav-link::after {
@@ -190,5 +203,23 @@
 
   .focus-ring:focus-visible {
     @apply ring-2 ring-primary;
+  }
+  
+  /* Testimonial card */
+  .testimonial-card {
+    @apply bg-card p-6 rounded-xl border border-primary/30 hover:border-primary transition-all duration-300;
+  }
+  
+  /* FAQ styles */
+  .faq-item {
+    @apply border border-primary/30 rounded-lg mb-4 overflow-hidden;
+  }
+  
+  .faq-question {
+    @apply flex justify-between items-center p-4 cursor-pointer bg-card hover:bg-muted;
+  }
+  
+  .faq-answer {
+    @apply p-4 bg-muted;
   }
 }
