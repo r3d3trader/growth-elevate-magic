@@ -121,7 +121,7 @@
   }
 
   .neon-box {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: hsl(var(--background));
     border: 2px solid hsl(var(--primary));
     box-shadow: 0 0 15px rgba(198, 255, 0, 0.4);
   }
@@ -132,6 +132,19 @@
   
   .feature-icon {
     @apply w-12 h-12 flex items-center justify-center rounded-full bg-primary text-primary-foreground mb-4;
+  }
+  
+  .section-dark {
+    @apply bg-background;
+  }
+  
+  .section-darker {
+    @apply bg-card;
+  }
+  
+  .video-placeholder {
+    @apply bg-background/40 border-2 border-primary;
+    box-shadow: inset 0 0 30px rgba(198, 255, 0, 0.2);
   }
 }
 

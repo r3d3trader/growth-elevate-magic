@@ -44,8 +44,8 @@ const Hero = ({ onSubmit }: HeroProps) => {
             </form>
           </div>
 
-          <div className="relative aspect-video max-w-4xl mx-auto mb-8 neon-border">
-            <div className="absolute inset-0 bg-primary/5 flex items-center justify-center">
+          <div className="relative aspect-video max-w-4xl mx-auto mb-8 border-2 border-primary shadow-custom">
+            <div className="absolute inset-0 video-placeholder flex items-center justify-center">
               <div className="w-16 h-16 rounded-full bg-primary/30 backdrop-blur-md flex items-center justify-center cursor-pointer hover:bg-primary/50 transition-colors">
                 <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
