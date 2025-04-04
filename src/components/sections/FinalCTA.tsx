@@ -8,7 +8,7 @@ interface FinalCTAProps {
 
 const FinalCTA = ({ onSubmit }: FinalCTAProps) => {
   return (
-    <section className="py-20 bg-agency-dark-lighter">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

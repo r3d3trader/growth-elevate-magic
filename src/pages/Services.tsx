@@ -8,133 +8,127 @@ import { Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Services = () => {
-  const serviceOfferings = [
-    {
-      title: "LeadGen Pro",
-      description: "Generate high-quality leads on autopilot",
-      features: [
-        "Automated lead capture system",
-        "Custom-built landing pages",
-        "Email & SMS followup sequences",
-        "Analytics dashboard"
-      ],
-      cta: "Learn More",
-      link: "/contact",
-      highlight: true
+  // Define service categories
+  const categories = [
+    { 
+      icon: "🚀", 
+      name: "Growth", 
+      description: "Comprehensive strategies for rapid business expansion" 
     },
-    {
-      title: "Website Optimizer",
-      description: "Convert more visitors into customers",
-      features: [
-        "Conversion-focused redesign",
-        "A/B testing implementation",
-        "Speed optimization",
-        "Mobile responsiveness"
-      ],
-      cta: "Learn More",
-      link: "/contact"
+    { 
+      icon: "🌐", 
+      name: "Web", 
+      description: "High-performance websites and digital experiences" 
     },
-    {
-      title: "Review Amplifier",
-      description: "Build trust with authentic reviews",
-      features: [
-        "Automated review collection",
-        "Review management dashboard",
-        "Negative feedback interception",
-        "Social proof widgets"
-      ],
-      cta: "Learn More",
-      link: "/contact"
+    { 
+      icon: "🤖", 
+      name: "Automation", 
+      description: "Streamlined operations through intelligent automation" 
     },
-    {
-      title: "Local Search Domination",
-      description: "Rank #1 in local search results",
-      features: [
-        "Google Business Profile optimization",
-        "Local citation building",
-        "GEO-targeted content",
-        "Competitor analysis"
-      ],
-      cta: "Learn More",
-      link: "/contact"
-    },
-    {
-      title: "ROI-Focused Ads",
-      description: "Maximize return on ad spend",
-      features: [
-        "Custom ad campaign setup",
-        "Target audience research",
-        "Ad creative development",
-        "Performance monitoring"
-      ],
-      cta: "Learn More",
-      link: "/contact"
-    },
-    {
-      title: "Full-Growth Package",
-      description: "The complete solution for 4x growth",
-      features: [
-        "All services combined",
-        "Strategic growth planning",
-        "Monthly performance reviews",
-        "Dedicated account manager"
-      ],
-      cta: "Learn More",
-      link: "/contact",
-      highlight: true
+    { 
+      icon: "📊", 
+      name: "Marketing", 
+      description: "Results-driven campaigns that generate quality leads" 
     },
   ];
 
-  const approaches = [
-    {
-      number: "01",
-      title: "Discover",
-      description: "We begin by understanding your business, customers, and objectives through a comprehensive strategy call."
+  // Define services table data
+  const services = [
+    { name: "Business Analysis Document", description: "Analyzes key business data, identifies opportunities, and creates a tailored strategy for growth." },
+    { name: "Wireframe Layout", description: "Designs intuitive wireframe layouts to optimize user flow and conversions." },
+    { name: "Ultra-Fast, Low Code, Mobile-Friendly HTML Website", description: "A 5-page, high-performance website with legal pages, knowledge sections, and action pages." },
+    { name: "Website Optimization", description: "Ensures fast load times, SEO enhancements, and conversion-focused design tweaks." },
+    { name: "Funnels and Landing Pages", description: "Custom-built funnels and landing pages designed to convert visitors into leads." },
+    { name: "CRM Creation, Integration & Workflow Automation", description: "Builds and automates a CRM system for seamless lead management." },
+    { name: "Forms for Lead Capture & Bookings", description: "High-conversion forms integrated into websites and marketing systems." },
+    { name: "Referral Management", description: "Custom login pages, workflows, and email sequences for structured referral programs." },
+    { name: "ChatBot Setup", description: "AI-powered chatbot to manage inquiries and integrate with WhatsApp." },
+    { name: "Abandonment Recovery", description: "Automated email and WhatsApp follow-ups to recover lost leads." },
+    { name: "Email Sequence Setup", description: "Personalized and automated email sequences for nurturing leads." },
+    { name: "Ads Management", description: "Strategy and optimization for paid ads across Google, Facebook, and Instagram." },
+    { name: "Reputation Management Setup", description: "Review management and customer engagement strategies for brand trust." },
+    { name: "Workflow Automation", description: "Multi-step automation to streamline operations and customer interactions." },
+    { name: "Automated Call Agent", description: "AI-driven call handling, follow-ups, and CRM logging for client communication." },
+    { name: "Leads Gen Agent", description: "Automated lead generation solutions integrated into CRM workflows." },
+    { name: "Payments Integration", description: "Secure payment gateway setup with Stripe, PayPal, and other providers." },
+    { name: "SEO Services", description: "Optimized content, local SEO strategies, and in-depth keyword research for search visibility." },
+    { name: "Security", description: "SSL certificates, security updates, and risk management for website protection." },
+    { name: "Analytics", description: "Comprehensive tracking and reporting tools for performance insights." },
+    { name: "Lead Magnet Creation & Strategies", description: "Custom high-value offers designed to attract and convert leads." },
+  ];
+
+  // Define approach steps
+  const approach = [
+    { 
+      title: "Discovery & Analysis", 
+      description: "Understanding business objectives through data-driven insights." 
     },
-    {
-      number: "02",
-      title: "Design",
-      description: "We create a customized plan based on your unique needs, leveraging proven frameworks that deliver results."
+    { 
+      title: "Planning & Strategy", 
+      description: "Developing a customized roadmap for rapid growth." 
     },
-    {
-      number: "03",
-      title: "Develop",
-      description: "Our team builds all the necessary systems, from websites to ads to automation, handling everything for you."
+    { 
+      title: "Implementation", 
+      description: "Executing high-performance websites, funnels, and automation tools." 
     },
-    {
-      number: "04",
-      title: "Deploy",
-      description: "We launch your campaigns and continuously optimize them for maximum ROI and business growth."
+    { 
+      title: "Automation & Integration", 
+      description: "Streamlining workflows to maximize efficiency." 
     },
-    {
-      number: "05",
-      title: "Drive Results",
-      description: "You enjoy more leads, customers, and revenue—without the hassle of doing it yourself."
+    { 
+      title: "Done-For-You Excellence", 
+      description: "Delivering fully managed solutions with no setup hassle." 
+    },
+    { 
+      title: "Monitoring & Optimization", 
+      description: "Continuously refining strategies for maximum ROI." 
+    },
+    { 
+      title: "Risk-Free Partnership", 
+      description: "60-day money-back guarantee to ensure confidence in our services." 
     },
   ];
 
+  // Define competitive advantages
+  const advantages = [
+    { 
+      title: "Results-Driven", 
+      description: "Strategies designed for measurable growth within 90 days." 
+    },
+    { 
+      title: "Proven Methodologies", 
+      description: "Data-backed funnels, automation, and CRM solutions." 
+    },
+    { 
+      title: "Holistic Service Suite", 
+      description: "End-to-end solutions for website, marketing, and automation." 
+    },
+    { 
+      title: "Risk-Free Investment", 
+      description: "60-day money-back guarantee for client confidence." 
+    },
+  ];
+
+  // Define success stories
   const successStories = [
-    {
-      business: "Local Plumbing Company",
-      result: "416% increase in booked jobs",
-      description: "We implemented our LeadGen Pro and Local Search Domination services, resulting in 100+ new leads per month."
+    { 
+      title: "Local Gym", 
+      description: "Implemented lead magnet funnels, automated call agents, and workflow automation. Achieved a 300% membership increase within 60 days." 
     },
-    {
-      business: "Family Dental Practice",
-      result: "327% ROI on marketing spend",
-      description: "Our Website Optimizer and Review Amplifier services helped them become the highest-rated practice in their area."
+    { 
+      title: "Dental Clinic", 
+      description: "Utilized referral management, automated email sequences, and call agent solutions. Doubled patient bookings in three months." 
     },
-    {
-      business: "Boutique Real Estate Agency",
-      result: "52 properties sold in 90 days",
-      description: "Our Full-Growth Package helped them outperform larger competitors despite a smaller marketing budget."
+    { 
+      title: "Real Estate Agency", 
+      description: "Integrated local SEO, CRM, targeted ads, and workflow automation. Quadrupled qualified leads and increased revenue 4x within 90 days." 
     },
   ];
 
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-gradient-to-b from-[#1a1a1a] to-[#1a1a1a]"> {/* Updated background */}
+      <section className="pt-28 pb-16 bg-gradient-to-b from-agency-blue-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -142,20 +136,20 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-green-400"> {/* Updated text color */}
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
               <span className="text-gradient">Our Services</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8"> {/* Updated text color */}
+            <p className="text-lg md:text-xl text-gray-700 mb-8">
               We provide comprehensive, done-for-you solutions to 4x your business growth in 90 days—guaranteed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <CtaButton size="lg" className="bg-green-400 text-black hover:bg-green-500"> {/* Updated button style */}
+                <CtaButton size="lg">
                   Get Your Free Strategy Call
                 </CtaButton>
               </Link>
               <Link to="/pricing">
-                <CtaButton variant="secondary" size="lg" className="bg-gray-800 text-green-400 hover:bg-gray-700"> {/* Updated button style */}
+                <CtaButton variant="secondary" size="lg">
                   View Our Pricing
                 </CtaButton>
               </Link>
@@ -164,26 +158,23 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Service Offerings Section */}
-      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
+      {/* Service Categories Section */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-16"
+            className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400"> {/* Updated text color */}
-              Our Service Offerings
-            </h2>
-            <p className="text-lg text-gray-300"> {/* Updated text color */}
-              Tailored solutions to help local businesses thrive in the digital age
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Service Offerings</h2>
+            <p className="text-lg text-gray-700">
+              Comprehensive solutions designed to accelerate your business growth
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {serviceOfferings.map((service, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {categories.map((category, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -191,38 +182,18 @@ const Services = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className={`h-full flex flex-col ${
-                  service.highlight 
-                  ? "border-green-400 bg-gray-800" 
-                  : "bg-gray-800 border-gray-700"
-                }`}> {/* Updated background and border */}
+                <Card className="h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
                   <CardHeader>
-                    <CardTitle className="text-xl text-green-400">{service.title}</CardTitle> {/* Updated text color */}
-                    <CardDescription className="text-gray-300">{service.description}</CardDescription> {/* Updated text color */}
+                    <div className="text-4xl mb-2">{category.icon}</div>
+                    <CardTitle>{category.name}</CardTitle>
+                    <CardDescription>{category.description}</CardDescription>
                   </CardHeader>
-                  <CardContent className="flex-grow">
-                    <ul className="space-y-2">
-                      {service.features.map((feature, fIndex) => (
-                        <li key={fIndex} className="flex items-start gap-2">
-                          <Check className="h-5 w-5 text-green-400 mt-0.5" /> {/* Updated text color */}
-                          <span className="text-gray-200">{feature}</span> {/* Updated text color */}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                  <div className="p-6 pt-0 mt-auto">
-                    <Link to={service.link}>
-                      <CtaButton
-                        variant={service.highlight ? "default" : "secondary"}
-                        className={service.highlight 
-                          ? "w-full bg-green-400 text-gray-900 hover:bg-green-500" 
-                          : "w-full bg-gray-700 text-green-400 hover:bg-gray-600"
-                        } /* Updated button style */
-                      >
-                        {service.cta}
-                      </CtaButton>
+                  <CardContent>
+                    <Link to="/contact" className="text-agency-blue hover:text-agency-indigo flex items-center gap-2 transition-colors">
+                      <span>Learn more</span>
+                      <ArrowRight className="h-4 w-4" />
                     </Link>
-                  </div>
+                  </CardContent>
                 </Card>
               </motion.div>
             ))}
@@ -230,161 +201,159 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Service Details Section */}
-      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="md:w-1/2"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-green-400"> {/* Updated text color */}
-                Service Details
-              </h2>
-              <p className="text-lg text-gray-300 mb-6"> {/* Updated text color */}
-                Unlike other agencies that charge high fees for mediocre results, we focus on delivering measurable growth, business automation, and ongoing optimization.
-              </p>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-400 p-3 rounded-full mt-1 text-gray-900"> {/* Updated background and text color */}
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-green-400">Done-For-You Implementation</h3> {/* Updated text color */}
-                    <p className="text-gray-300">We handle everything from strategy to execution, allowing you to focus on what you do best—running your business.</p> {/* Updated text color */}
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-400 p-3 rounded-full mt-1 text-gray-900"> {/* Updated background and text color */}
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-green-400">Results-Driven Approach</h3> {/* Updated text color */}
-                    <p className="text-gray-300">We don't just focus on vanity metrics—we optimize for leads, sales, and revenue that actually grow your business.</p> {/* Updated text color */}
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-400 p-3 rounded-full mt-1 text-gray-900"> {/* Updated background and text color */}
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-green-400">60-Day Money-Back Guarantee</h3> {/* Updated text color */}
-                    <p className="text-gray-300">We're so confident in our services that we offer a 60-day money-back guarantee if you're not satisfied with the results.</p> {/* Updated text color */}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="md:w-1/2"
-            >
-              <div className="bg-gray-800 rounded-xl p-8 border border-gray-700"> {/* Updated background and border */}
-                <h3 className="text-2xl font-bold mb-6 text-green-400">What Makes Us Different</h3> {/* Updated text color */}
-                <div className="space-y-6">
-                  <div className="flex items-start gap-3">
-                    <ArrowRight className="h-5 w-5 text-green-400 mt-1" /> {/* Updated text color */}
-                    <div>
-                      <h4 className="font-bold mb-1 text-gray-100">Specialized in Local Businesses</h4> {/* Updated text color */}
-                      <p className="text-gray-300">We understand the unique challenges of local businesses and create strategies specifically tailored to your local market.</p> {/* Updated text color */}
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <ArrowRight className="h-5 w-5 text-green-400 mt-1" /> {/* Updated text color */}
-                    <div>
-                      <h4 className="font-bold mb-1 text-gray-100">No Long-Term Contracts</h4> {/* Updated text color */}
-                      <p className="text-gray-300">We don't believe in locking clients into lengthy contracts. Our results make clients want to stay, not contractual obligations.</p> {/* Updated text color */}
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <ArrowRight className="h-5 w-5 text-green-400 mt-1" /> {/* Updated text color */}
-                    <div>
-                      <h4 className="font-bold mb-1 text-gray-100">White-Glove Customer Service</h4> {/* Updated text color */}
-                      <p className="text-gray-300">You'll have direct access to your dedicated account manager who knows your business and is invested in your success.</p> {/* Updated text color */}
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <ArrowRight className="h-5 w-5 text-green-400 mt-1" /> {/* Updated text color */}
-                    <div>
-                      <h4 className="font-bold mb-1 text-gray-100">Transparent Reporting</h4> {/* Updated text color */}
-                      <p className="text-gray-300">You'll always know exactly what we're doing and the results we're achieving with easy-to-understand reports.</p> {/* Updated text color */}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Approach Section */}
-      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
+      {/* Services Table Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400">Our Approach & Methodology</h2> {/* Updated text color */}
-            <p className="text-lg text-gray-300">
-              Our proven 5-step process ensures consistent results across all client campaigns
-            </p> {/* Updated text color */}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Service Details</h2>
+            <p className="text-lg text-gray-700">
+              Explore our comprehensive suite of services designed to accelerate your business growth
+            </p>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto">
-            {approaches.map((approach, index) => (
+          <div className="overflow-x-auto bg-white rounded-xl shadow-md">
+            <table className="w-full">
+              <thead className="bg-agency-blue text-white">
+                <tr>
+                  <th className="px-6 py-4 text-left">Service</th>
+                  <th className="px-6 py-4 text-left">Description</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {services.map((service, index) => (
+                  <motion.tr 
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.2, delay: index * 0.03 }}
+                    className="hover:bg-gray-50"
+                  >
+                    <td className="px-6 py-4 font-medium">{service.name}</td>
+                    <td className="px-6 py-4">{service.description}</td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mt-10"
+          >
+            <Link to="/pricing">
+              <CtaButton>
+                See Our Service Packages
+              </CtaButton>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Approach Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-4xl mx-auto mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Approach & Methodology</h2>
+            <p className="text-lg text-gray-700">
+              How we deliver exceptional results for our clients
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {approach.map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex gap-6 md:gap-10 mb-12 last:mb-0"
+                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
               >
-                <div className="pt-1">
-                  <span className="block text-4xl font-bold text-green-400">{approach.number}</span> {/* Updated text color */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="bg-agency-blue-50 text-agency-blue font-bold rounded-full h-10 w-10 flex items-center justify-center">
+                    {index + 1}
+                  </div>
+                  <h3 className="font-bold text-xl">{step.title}</h3>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-green-400">{approach.title}</h3> {/* Updated text color */}
-                  <p className="text-gray-300">{approach.description}</p> {/* Updated text color */}
-                </div>
+                <p className="text-gray-700">{step.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Client Success Stories */}
-      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
+      {/* Competitive Advantage Section */}
+      <section className="py-16 bg-agency-blue-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400">Client Success Stories</h2> {/* Updated text color */}
-            <p className="text-lg text-gray-300">
-              Real results from businesses just like yours
-            </p> {/* Updated text color */}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Competitive Advantage</h2>
+            <p className="text-lg text-gray-700">
+              What sets us apart from other agencies
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
+            {advantages.map((advantage, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 shadow-md"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="bg-green-100 rounded-full p-1">
+                    <Check className="h-5 w-5 text-green-600" />
+                  </div>
+                  <h3 className="font-bold text-xl">{advantage.title}</h3>
+                </div>
+                <p className="text-gray-700 pl-9">{advantage.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Success Stories Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-4xl mx-auto mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Client Success Stories</h2>
+            <p className="text-lg text-gray-700">
+              Businesses Like Yours Are Achieving 4X Growth—Here's How!
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
             {successStories.map((story, index) => (
               <motion.div
                 key={index}
@@ -392,14 +361,14 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-800 rounded-xl p-8 border border-gray-700" /* Updated background and border */
+                className="bg-white rounded-xl p-6 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300"
               >
-                <div className="bg-green-400 h-12 w-12 rounded-full flex items-center justify-center mb-6 text-gray-900"> {/* Updated background and text color */}
-                  <Check className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-100">{story.business}</h3> {/* Updated text color */}
-                <p className="text-2xl font-bold mb-4 text-green-400">{story.result}</p> {/* Updated text color */}
-                <p className="text-gray-300">{story.description}</p> {/* Updated text color */}
+                <h3 className="font-bold text-xl mb-3 text-agency-blue">{story.title}</h3>
+                <p className="text-gray-700 mb-4">{story.description}</p>
+                <Link to="/contact" className="text-agency-blue hover:text-agency-indigo flex items-center gap-2 transition-colors">
+                  <span>Read full case study</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -407,7 +376,7 @@ const Services = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-green-400 to-green-500 text-black"> {/* Updated background and text color */}
+      <section className="py-16 bg-gradient-to-r from-agency-blue to-agency-indigo text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -422,12 +391,12 @@ const Services = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <CtaButton size="lg" className="bg-black text-green-400 hover:bg-gray-800"> {/* Updated button style */}
+                <CtaButton size="lg" className="bg-white text-agency-blue hover:bg-opacity-90">
                   Get Your Free Growth Plan
                 </CtaButton>
               </Link>
               <Link to="/pricing">
-                <CtaButton variant="outline" size="lg" className="border-black text-black hover:bg-green-400 hover:text-black"> {/* Updated button style */}
+                <CtaButton variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-agency-blue">
                   View Pricing Plans
                 </CtaButton>
               </Link>

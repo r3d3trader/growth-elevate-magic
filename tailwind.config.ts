@@ -67,12 +67,12 @@ const config: Config = {
           ring: "hsl(var(--sidebar-ring))",
         },
         agency: {
-          neon: "#c0ff00",
-          "neon-dark": "#a6e600",
-          dark: "#000000",
+          neon: "#c6ff00",
+          "neon-dark": "#99cc00",
+          dark: "#121212",
           "dark-lighter": "#1a1a1a",
-          "dark-lightest": "#1a1a1a",
-          black: "#000000",
+          "dark-lightest": "#222222",
+          black: "#0a0a0a",
         },
       },
       borderRadius: {

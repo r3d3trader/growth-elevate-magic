@@ -1,14 +1,15 @@
+
 import React, { useState } from "react";
+import PageLayout from "@/components/layout/PageLayout";
 import { motion } from "framer-motion";
 import CtaButton from "@/components/ui/cta-button";
 import { Check, HelpCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import PageLayout from "@/components/layout/PageLayout";
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
-
+  
   const plans = [
     {
       name: "Partner",
@@ -151,7 +152,7 @@ const Pricing = () => {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-gradient-to-b from-[#1a1a1a] to-[#1a1a1a]"> {/* Updated background */}
+      <section className="pt-28 pb-16 bg-gradient-to-b from-agency-blue-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -159,32 +160,32 @@ const Pricing = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-white"> {/*Added text-white */}
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
               <span className="text-gradient">Simple, Transparent Pricing</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8"> {/*Changed text color*/}
+            <p className="text-lg md:text-xl text-gray-700 mb-8">
               Choose the perfect plan to accelerate your business growth with our risk-free 60-day money-back guarantee.
             </p>
-
+            
             {/* Billing toggle */}
             <div className="flex items-center justify-center mb-8">
-              <span className={`mr-3 ${!isAnnual ? 'font-bold text-green-400' : 'text-gray-600'}`}>Monthly</span> {/*Changed color*/}
+              <span className={`mr-3 ${!isAnnual ? 'font-bold text-agency-blue' : 'text-gray-600'}`}>Monthly</span>
               <button 
                 onClick={() => setIsAnnual(!isAnnual)}
-                className={`relative inline-flex h-6 w-12 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isAnnual ? 'bg-green-400' : 'bg-gray-200'}`} {/*Changed color*/}
+                className={`relative inline-flex h-6 w-12 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isAnnual ? 'bg-agency-blue' : 'bg-gray-200'}`}
               >
                 <span 
                   className={`pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform ${isAnnual ? 'translate-x-6' : 'translate-x-1'}`} 
                 />
               </button>
-              <span className={`ml-3 ${isAnnual ? 'font-bold text-green-400' : 'text-gray-600'}`}>Annual (Save 16%)</span> {/*Changed color*/}
+              <span className={`ml-3 ${isAnnual ? 'font-bold text-agency-blue' : 'text-gray-600'}`}>Annual (Save 16%)</span>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-10 md:py-20 bg-[#1a1a1a]"> {/* Updated background */}
+      <section className="py-10 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {plans.map((plan, index) => (
@@ -193,36 +194,36 @@ const Pricing = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative rounded-2xl overflow-hidden border ${plan.highlight ? 'border-green-400 shadow-lg shadow-green-400/10' : 'border-gray-200'}`} {/*Changed color*/}
+                className={`relative rounded-2xl overflow-hidden border ${plan.highlight ? 'border-agency-blue shadow-lg shadow-agency-blue/10' : 'border-gray-200'}`}
               >
                 {plan.highlight && (
-                  <div className="absolute top-0 left-0 right-0 bg-green-400 text-white text-center py-1 text-sm font-medium"> {/*Changed color*/}
+                  <div className="absolute top-0 left-0 right-0 bg-agency-blue text-white text-center py-1 text-sm font-medium">
                     MOST POPULAR
                   </div>
                 )}
-
+                
                 <div className={`p-6 ${plan.highlight ? 'pt-8' : 'pt-6'}`}>
-                  <h3 className="text-2xl font-bold mb-2 text-white"> {/*Added text-white*/} {plan.name}</h3>
-                  <p className="text-gray-300 h-12"> {/*Changed text color*/} {plan.description}</p>
-
+                  <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                  <p className="text-gray-600 h-12">{plan.description}</p>
+                  
                   <div className="mt-4 mb-6">
                     <div className="flex items-end">
-                      <span className="text-4xl font-bold text-white"> {/*Added text-white*/} ${plan.setupFee}</span>
-                      <span className="text-gray-300 ml-1 mb-1">setup</span> {/*Changed text color*/}
+                      <span className="text-4xl font-bold">${plan.setupFee}</span>
+                      <span className="text-gray-600 ml-1 mb-1">setup</span>
                     </div>
                     <div className="flex items-end mt-2">
-                      <span className="text-3xl font-bold text-white"> {/*Added text-white*/}
+                      <span className="text-3xl font-bold">
                         ${isAnnual ? Math.round(plan.annualFee / 12) : plan.monthlyFee}
                       </span>
-                      <span className="text-gray-300 ml-1 mb-1">/month</span> {/*Changed text color*/}
+                      <span className="text-gray-600 ml-1 mb-1">/month</span>
                     </div>
                     {isAnnual && (
-                      <p className="text-sm text-green-400 mt-1"> {/*Changed color*/}
+                      <p className="text-sm text-agency-blue mt-1">
                         Billed annually (${plan.annualFee}/year)
                       </p>
                     )}
                   </div>
-
+                  
                   <Link to="/contact" className="block w-full">
                     <CtaButton 
                       className={`w-full ${plan.highlight ? '' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`} 
@@ -231,13 +232,13 @@ const Pricing = () => {
                       Get Started
                     </CtaButton>
                   </Link>
-
+                  
                   <div className="mt-6">
-                    <p className="font-medium mb-3 text-white">Key features:</p> {/*Added text-white*/}
+                    <p className="font-medium mb-3">Key features:</p>
                     <ul className="space-y-2">
                       {plan.features.slice(0, 7).map((feature, i) => (
-                        <li key={i} className="flex items-start text-gray-300"> {/*Changed text color*/}
-                          <Check className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" /> {/*Changed color*/}
+                        <li key={i} className="flex items-start">
+                          <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -251,24 +252,24 @@ const Pricing = () => {
       </section>
 
       {/* Compare Plans Table */}
-      <section className="py-16 bg-[#1a1a1a]"> {/* Updated background */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12 text-white"
-          > {/* Added text-white */}
+            className="text-center max-w-4xl mx-auto mb-12"
+          >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Compare All Features</h2>
-            <p className="text-lg text-gray-300"> {/*Changed text color*/}
+            <p className="text-lg text-gray-700">
               See all the features included in each of our pricing plans
             </p>
           </motion.div>
 
           <div className="overflow-x-auto bg-white rounded-xl shadow-md">
             <table className="w-full">
-              <thead className="bg-green-400 text-white"> {/* Changed color */}
+              <thead className="bg-agency-blue text-white">
                 <tr>
                   <th className="px-6 py-4 text-left">Service</th>
                   <th className="px-6 py-4 text-center">Partner</th>
@@ -325,7 +326,7 @@ const Pricing = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-[#1a1a1a] text-white"> {/* Updated background and text color */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -335,7 +336,7 @@ const Pricing = () => {
             className="text-center max-w-4xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-300"> {/*Changed text color*/}
+            <p className="text-lg text-gray-700">
               Get answers to the most common questions about our pricing and services
             </p>
           </motion.div>
@@ -380,7 +381,7 @@ const Pricing = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-green-400 to-green-700 text-white"> {/* Updated background and text color */}
+      <section className="py-16 bg-gradient-to-r from-agency-blue to-agency-indigo text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -395,7 +396,7 @@ const Pricing = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <CtaButton size="lg" className="bg-white text-green-400 hover:bg-opacity-90">
+                <CtaButton size="lg" className="bg-white text-agency-blue hover:bg-opacity-90">
                   Schedule Your Free Strategy Call
                 </CtaButton>
               </Link>
