@@ -1,46 +1,62 @@
-
 import React from "react";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Button, ButtonProps } from "@/components/ui/button";
+import { UI } from "@/config/ui";
 import { cn } from "@/lib/utils";
 
-interface CtaButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface CtaButtonProps extends ButtonProps {
   size?: "default" | "sm" | "lg";
   variant?: "default" | "outline" | "secondary";
+  rounded?: "default" | "full";
   children: React.ReactNode;
 }
 
 const CtaButton = ({
   size = "default",
   variant = "default",
-  className,
+  rounded = "full",
+  className = "",
   children,
   ...props
-}: CtaButtonProps) => {
-  const buttonStyles = {
-    default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-custom",
-    outline: "border border-primary bg-transparent text-primary hover:bg-primary/10",
-    secondary: "bg-card border border-primary/30 hover:border-primary text-foreground",
-  };
-
-  const sizeStyles = {
-    default: "py-2.5 px-6 text-sm",
-    sm: "py-2 px-4 text-xs",
-    lg: "py-3 px-8 text-base",
-  };
-
-  return (
+}: CtaButtonProps) => (
+  <motion.div
+    whileHover={{ 
+      scale: 1.02,
+      transition: { type: "spring", stiffness: 500 }
+    }}
+    whileTap={{ 
+      scale: 0.98,
+      transition: { type: "spring", stiffness: 500 }
+    }}
+    className="inline-block"
+  >
     <Button
       className={cn(
-        "rounded-full font-medium transition-all duration-300 shadow-custom-hover",
-        buttonStyles[variant],
-        sizeStyles[size],
+        "relative overflow-hidden",
+        "transition-all duration-300",
+        variant === 'default' ? UI.gradients.primary : '',
+        variant === 'default' ? 'text-dark hover:text-dark/90' : '',
+        variant === 'default' ? UI.shadows.button : '',
+        "hover:shadow-lg",
+        "font-medium tracking-wide",
         className
       )}
+      variant={variant}
+      size={size}
+      rounded={rounded}
       {...props}
     >
-      {children}
+      <span className="relative z-10">{children}</span>
+      {variant === 'default' && (
+        <motion.span
+          className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
     </Button>
-  );
-};
+  </motion.div>
+);
 
 export default CtaButton;

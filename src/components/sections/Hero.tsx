@@ -1,98 +1,134 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { ChevronDown, Star, Zap } from "lucide-react";
+import { UI } from "@/config/ui";
 import CtaButton from "@/components/ui/cta-button";
 
 interface HeroProps {
   onSubmit: (e: React.FormEvent) => void;
 }
 
-const Hero = ({ onSubmit }: HeroProps) => {
+export default function Hero({ onSubmit }: HeroProps) {
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    <section className={`relative overflow-hidden min-h-screen flex items-center ${UI.gradients.dark}`}>
+      {/* Premium Background Elements */}
+      <div className="absolute inset-0 z-0">
+        {/* Grid Texture */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e6ff0008_1px,transparent_1px),linear-gradient(to_bottom,#e6ff0008_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />
+        
+        {/* Animated Gradient Orbs */}
+        <motion.div 
+          className="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-primary/10 blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-1/5 w-72 h-72 rounded-full bg-primary/10 blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: 2
+          }}
+        />
+      </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto"
+      {/* Content Container */}
+      <div className={`container relative z-10 ${UI.spacing.section} ${UI.spacing.inner}`}>
+        <motion.div 
+          className="max-w-5xl mx-auto text-center"
+          variants={UI.animations.stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight neon-glow">
-            <span className="text-primary">AI SALES SYSTEM</span> – THE <br/>
-            EASIEST WAY TO GET HIGH-<br/>
-            PAYING CLIENTS ON AUTOPILOT!
-          </h1>
+          {/* Headline */}
+          <motion.h1 
+            className={`${UI.text.sizes.display} font-medium tracking-tight leading-tight ${UI.text.balance} mb-8`}
+            variants={UI.animations.slideUp}
+          >
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-400">
+              Transform Your Business
+            </span> with Growth Elevate Magic
+          </motion.h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Automate your client acquisition and scale your business with our proven AI-powered sales system
-          </p>
+          {/* Subhead */}
+          <motion.p 
+            className={`${UI.text.sizes.subhead} text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed`}
+            variants={{
+              ...UI.animations.slideUp,
+              transition: { ...UI.animations.slideUp.transition, delay: 0.2 }
+            }}
+          >
+            Premium digital solutions that deliver measurable results and accelerate your growth trajectory.
+          </motion.p>
 
-          <div className="mb-12">
-            <form onSubmit={onSubmit} className="max-w-md mx-auto">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-grow px-4 py-3 rounded-full bg-muted border border-primary/30 focus:border-primary text-foreground focus:outline-none"
-                  required
-                />
-                <CtaButton className="w-full sm:w-auto">
-                  Get Started Now
-                </CtaButton>
-              </div>
-            </form>
-          </div>
+          {/* CTA */}
+          <motion.div 
+            className="flex justify-center gap-4"
+            variants={{
+              ...UI.animations.slideUp,
+              transition: { ...UI.animations.slideUp.transition, delay: 0.4 }
+            }}
+          >
+            <CtaButton 
+              size="lg"
+              className="px-8 py-6 text-lg"
+              onClick={onSubmit}
+            >
+              <Zap className="w-5 h-5 mr-2" />
+              Schedule Strategy Call
+            </CtaButton>
+            <CtaButton 
+              variant="outline"
+              size="lg"
+              className="px-8 py-6 text-lg border-primary/30 hover:bg-primary/5"
+            >
+              <Star className="w-5 h-5 mr-2" />
+              View Case Studies
+            </CtaButton>
+          </motion.div>
 
-          <div className="relative aspect-video max-w-4xl mx-auto mb-8 border-2 border-primary shadow-custom">
-            <div className="absolute inset-0 video-placeholder flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-primary/30 backdrop-blur-md flex items-center justify-center cursor-pointer hover:bg-primary/50 transition-colors">
-                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap justify-center items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1">
+          {/* Trust Indicators */}
+          <motion.div
+            className="mt-16 flex flex-col items-center gap-4"
+            variants={{
+              ...UI.animations.slideUp,
+              transition: { ...UI.animations.slideUp.transition, delay: 0.6 }
+            }}
+          >
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span className="w-3 h-3 rounded-full bg-primary"></span>
               Trusted by 1,000+ businesses
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-3 h-3 rounded-full bg-primary"></span>
-              Conversion focused design
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-3 h-3 rounded-full bg-primary"></span>
-              Start scaling in minutes
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-3 h-3 rounded-full bg-primary"></span>
-              Expert support team
-            </span>
-          </div>
+            </div>
+          </motion.div>
         </motion.div>
 
-        <div className="flex justify-center gap-12 mt-16">
-          <div className="stat-card">
-            <div className="text-3xl font-bold text-primary mb-1 neon-glow">+92%</div>
-            <div className="text-sm text-muted-foreground">Conversion Rate</div>
-          </div>
-
-          <div className="stat-card">
-            <div className="text-3xl font-bold text-primary mb-1 neon-glow">6X</div>
-            <div className="text-sm text-muted-foreground">Revenue Growth</div>
-          </div>
-
-          <div className="stat-card">
-            <div className="text-3xl font-bold text-primary mb-1 neon-glow">+46%</div>
-            <div className="text-sm text-muted-foreground">Client Retention</div>
-          </div>
-        </div>
+        {/* Scroll Indicator */}
+        <motion.div
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          animate={{
+            y: [0, 12, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <ChevronDown className="h-7 w-7 text-primary" />
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

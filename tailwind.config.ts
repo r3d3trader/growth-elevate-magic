@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import { PremiumDesign } from "./src/config/premium-design-system"
 
 const config: Config = {
   darkMode: ["class"],
@@ -18,6 +19,14 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: [PremiumDesign.typography.fontFamily.primary],
+        serif: [PremiumDesign.typography.fontFamily.secondary],
+        mono: [PremiumDesign.typography.fontFamily.mono],
+      },
+      fontSize: PremiumDesign.typography.fontSize,
+      lineHeight: PremiumDesign.typography.lineHeight,
+      letterSpacing: PremiumDesign.typography.letterSpacing,
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -27,6 +36,7 @@ const config: Config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          ...PremiumDesign.colors.primary,
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -43,6 +53,7 @@ const config: Config = {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          ...PremiumDesign.colors.accent,
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -74,11 +85,17 @@ const config: Config = {
           "dark-lightest": "#222222",
           black: "#0a0a0a",
         },
+        neutral: PremiumDesign.colors.neutral,
+        semantic: PremiumDesign.colors.semantic,
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        ...PremiumDesign.borderRadius,
+      },
+      boxShadow: {
+        ...PremiumDesign.shadows,
       },
       keyframes: {
         "accordion-down": {
@@ -93,11 +110,28 @@ const config: Config = {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        ...PremiumDesign.animations.keyframes,
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.5s ease-out forwards",
+        "fade-in-up": "fadeInUp 0.5s ease-out forwards",
+        "fade-in-down": "fadeInDown 0.5s ease-out forwards",
+        "scale-in": "scaleIn 0.5s ease-out forwards",
+        "slide-in-right": "slideInRight 0.5s ease-out forwards",
+        "slide-in-left": "slideInLeft 0.5s ease-out forwards",
+        "pulse": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "shimmer": "shimmer 2s infinite",
+      },
+      transitionTimingFunction: PremiumDesign.animations.easing,
+      transitionDuration: PremiumDesign.animations.duration,
+      backgroundImage: {
+        'gradient-primary': PremiumDesign.gradients.primary,
+        'gradient-accent': PremiumDesign.gradients.accent,
+        'gradient-premium': PremiumDesign.gradients.premium,
+        'gradient-dark': PremiumDesign.gradients.dark,
+        'gradient-glass': PremiumDesign.gradients.glass,
       },
     },
   },

@@ -1,11 +1,13 @@
-
 import React from "react";
-import PageLayout from "@/components/layout/PageLayout";
+import EnhancedPageLayout from "@/components/layout/EnhancedPageLayout";
 import { motion } from "framer-motion";
-import CtaButton from "@/components/ui/cta-button";
+import EnhancedButton from "@/components/ui/enhanced-button";
+import { LuxuryText } from "@/components/ui/premium-effects";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Zap, Target, MessageSquare, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import EnhancedParticles from "@/components/ui/enhanced-particles";
+import EnhancedFeatureCard from "@/components/ui/enhanced-feature-card";
 
 const Services = () => {
   // Define service categories
@@ -112,170 +114,242 @@ const Services = () => {
   // Define success stories
   const successStories = [
     { 
+      initials: "LG", 
       title: "Local Gym", 
       description: "Implemented lead magnet funnels, automated call agents, and workflow automation. Achieved a 300% membership increase within 60 days." 
     },
     { 
+      initials: "DC", 
       title: "Dental Clinic", 
       description: "Utilized referral management, automated email sequences, and call agent solutions. Doubled patient bookings in three months." 
     },
     { 
+      initials: "RA", 
       title: "Real Estate Agency", 
       description: "Integrated local SEO, CRM, targeted ads, and workflow automation. Quadrupled qualified leads and increased revenue 4x within 90 days." 
     },
   ];
 
+  // Define stats
+  const stats = [
+    { value: "4X", label: "Average Growth" },
+    { value: "89%", label: "Time Saved" },
+    { value: "60 Days", label: "To Results" }
+  ];
+
   return (
-    <PageLayout>
+    <EnhancedPageLayout>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-gradient-to-b from-agency-blue-50 to-white">
-        <div className="container mx-auto px-4">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-black pt-20 pb-16">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e6ff0008_1px,transparent_1px),linear-gradient(to_bottom,#e6ff0008_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />
+          <EnhancedParticles />
+        </div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-              <span className="text-gradient">Our Services</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8">
-              We provide comprehensive, done-for-you solutions to 4x your business growth in 90 days—guaranteed.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6ff00]/10 border border-[#c6ff00]/20 text-sm font-medium text-[#c6ff00] mb-6"
+            >
+              <Sparkles className="h-4 w-4 text-[#c6ff00]" />
+              <span>Our Industry-Leading Services</span>
+            </motion.div>
+            
+            <LuxuryText 
+              as="h1" 
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6"
+              gradient="primary"
+              glow
+            >
+              Your Growth Accelerator
+            </LuxuryText>
+            
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto"
+            >
+              Comprehensive strategies and cutting-edge technologies to transform your business and outperform competitors.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <Link to="/contact">
-                <CtaButton size="lg">
-                  Get Your Free Strategy Call
-                </CtaButton>
+                <EnhancedButton 
+                  variant="premium" 
+                  size="lg" 
+                  glow
+                  className="w-full sm:w-auto"
+                  icon={<ArrowRight className="h-5 w-5" />}
+                  iconPosition="right"
+                >
+                  Get Your Free Consultation
+                </EnhancedButton>
               </Link>
               <Link to="/pricing">
-                <CtaButton variant="secondary" size="lg">
-                  View Our Pricing
-                </CtaButton>
+                <EnhancedButton 
+                  variant="outline" 
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  View Pricing Plans
+                </EnhancedButton>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Service Categories Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Service Categories */}
+      <section className="py-20 bg-gradient-to-b from-black to-black/95">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Service Offerings</h2>
-            <p className="text-lg text-gray-700">
-              Comprehensive solutions designed to accelerate your business growth
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6ff00]/10 border border-[#c6ff00]/20 text-sm font-medium text-[#c6ff00] mb-6">
+              <Zap className="h-4 w-4 text-[#c6ff00]" />
+              <span>Four Pillars of Growth</span>
+            </div>
+            
+            <LuxuryText 
+              as="h2" 
+              className="text-3xl md:text-4xl font-bold tracking-tight mb-6"
+              gradient="primary"
+              glow
+            >
+              Comprehensive Services
+            </LuxuryText>
+            
+            <p className="text-lg text-white/70">
+              We've crafted our services to deliver maximum impact across all aspects of your business.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {categories.map((category, index) => (
-              <motion.div
+              <motion.div 
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className="bg-black/50 backdrop-blur-sm border border-[#c6ff00]/10 rounded-xl p-6 hover:border-[#c6ff00]/30 transition-all duration-300"
               >
-                <Card className="h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
-                  <CardHeader>
-                    <div className="text-4xl mb-2">{category.icon}</div>
-                    <CardTitle>{category.name}</CardTitle>
-                    <CardDescription>{category.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Link to="/contact" className="text-agency-blue hover:text-agency-indigo flex items-center gap-2 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="text-4xl mb-4">{category.icon}</div>
+                  <h3 className="text-xl font-bold text-[#c6ff00] mb-2">{category.name}</h3>
+                  <p className="text-white/70 flex-grow">{category.description}</p>
+                  <div className="mt-6 pt-4 border-t border-white/10">
+                    <Link 
+                      to="/contact" 
+                      className="inline-flex items-center gap-1.5 text-sm text-[#c6ff00] hover:text-[#d4ff4d] transition-colors"
+                    >
                       <span>Learn more</span>
                       <ArrowRight className="h-4 w-4" />
                     </Link>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Table Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+      {/* Services Table/Grid */}
+      <section className="py-20 relative bg-gradient-to-b from-black/95 to-black/90 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e6ff0008_1px,transparent_1px),linear-gradient(to_bottom,#e6ff0008_1px,transparent_1px)] bg-[size:40px_40px] opacity-10"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Service Details</h2>
-            <p className="text-lg text-gray-700">
-              Explore our comprehensive suite of services designed to accelerate your business growth
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6ff00]/10 border border-[#c6ff00]/20 text-sm font-medium text-[#c6ff00] mb-6">
+              <Target className="h-4 w-4 text-[#c6ff00]" />
+              <span>Comprehensive Solutions</span>
+            </div>
+            
+            <LuxuryText 
+              as="h2" 
+              className="text-3xl md:text-4xl font-bold tracking-tight mb-6"
+              gradient="primary"
+              glow
+            >
+              Our Service Offerings
+            </LuxuryText>
+            
+            <p className="text-lg text-white/70">
+              Each service is designed to address specific aspects of your business growth strategy
             </p>
           </motion.div>
 
-          <div className="overflow-x-auto bg-white rounded-xl shadow-md">
-            <table className="w-full">
-              <thead className="bg-agency-blue text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left">Service</th>
-                  <th className="px-6 py-4 text-left">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {services.map((service, index) => (
-                  <motion.tr 
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.2, delay: index * 0.03 }}
-                    className="hover:bg-gray-50"
-                  >
-                    <td className="px-6 py-4 font-medium">{service.name}</td>
-                    <td className="px-6 py-4">{service.description}</td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <div key={index} className="h-full">
+                <EnhancedFeatureCard
+                  title={service.name}
+                  description={service.description}
+                  icon={<Check className="h-5 w-5 text-[#c6ff00]" />}
+                  delay={index * 0.05}
+                />
+              </div>
+            ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mt-10"
-          >
-            <Link to="/pricing">
-              <CtaButton>
-                See Our Service Packages
-              </CtaButton>
-            </Link>
-          </motion.div>
         </div>
       </section>
 
-      {/* Our Approach Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Approach Section */}
+      <section className="py-24 bg-gradient-to-b from-black/90 to-black">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Approach & Methodology</h2>
-            <p className="text-lg text-gray-700">
-              How we deliver exceptional results for our clients
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6ff00]/10 border border-[#c6ff00]/20 text-sm font-medium text-[#c6ff00] mb-6">
+              <MessageSquare className="h-4 w-4 text-[#c6ff00]" />
+              <span>Our Methodology</span>
+            </div>
+            
+            <LuxuryText 
+              as="h2" 
+              className="text-3xl md:text-4xl font-bold tracking-tight mb-6"
+              gradient="primary"
+              glow
+            >
+              How We Work With You
+            </LuxuryText>
+            
+            <p className="text-lg text-white/70">
+              Our proven approach ensures we deliver consistent results for your business
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {approach.map((step, index) => (
               <motion.div
                 key={index}
@@ -283,54 +357,26 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
+                className="relative"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-agency-blue-50 text-agency-blue font-bold rounded-full h-10 w-10 flex items-center justify-center">
-                    {index + 1}
+                <div className="bg-black/50 backdrop-blur-sm border border-[#c6ff00]/10 rounded-xl p-8 hover:border-[#c6ff00]/30 transition-all duration-300 h-full">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#c6ff00]/10 text-[#c6ff00] font-bold">
+                      {index + 1}
+                    </div>
+                    <h3 className="text-xl font-bold text-white">{step.title}</h3>
                   </div>
-                  <h3 className="font-bold text-xl">{step.title}</h3>
+                  <p className="text-white/70">{step.description}</p>
                 </div>
-                <p className="text-gray-700">{step.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Competitive Advantage Section */}
-      <section className="py-16 bg-agency-blue-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Competitive Advantage</h2>
-            <p className="text-lg text-gray-700">
-              What sets us apart from other agencies
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {advantages.map((advantage, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="bg-green-100 rounded-full p-1">
-                    <Check className="h-5 w-5 text-green-600" />
+                
+                {index < approach.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 right-0 w-8 h-2 translate-x-full">
+                    <div className="w-full h-0.5 bg-[#c6ff00]/30"></div>
+                    <div className="absolute right-0 top-1/2 transform translate-y-[-50%] -translate-x-1">
+                      <ArrowRight className="h-5 w-5 text-[#c6ff00]/50" />
+                    </div>
                   </div>
-                  <h3 className="font-bold text-xl">{advantage.title}</h3>
-                </div>
-                <p className="text-gray-700 pl-9">{advantage.description}</p>
+                )}
               </motion.div>
             ))}
           </div>
@@ -338,22 +384,71 @@ const Services = () => {
       </section>
 
       {/* Success Stories Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-gradient-to-b from-black to-black/95 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e6ff0008_1px,transparent_1px),linear-gradient(to_bottom,#e6ff0008_1px,transparent_1px)] bg-[size:40px_40px] opacity-10"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Client Success Stories</h2>
-            <p className="text-lg text-gray-700">
-              Businesses Like Yours Are Achieving 4X Growth—Here's How!
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6ff00]/10 border border-[#c6ff00]/20 text-sm font-medium text-[#c6ff00] mb-6">
+              <Sparkles className="h-4 w-4 text-[#c6ff00]" />
+              <span>Results That Speak</span>
+            </div>
+            
+            <LuxuryText 
+              as="h2" 
+              className="text-3xl md:text-4xl font-bold tracking-tight mb-6"
+              gradient="primary"
+              glow
+            >
+              Success Stories
+            </LuxuryText>
+            
+            <p className="text-lg text-white/70 mb-8">
+              Real results from real clients who trusted our process
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          {/* Stats Row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-16"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+                  whileHover={{ y: -5, scale: 1.02, transition: { duration: 0.2 } }}
+                  className="bg-black/50 backdrop-blur-sm border border-[#c6ff00]/10 rounded-xl p-6 hover:border-[#c6ff00]/30 transition-all duration-300 text-center"
+                >
+                  <LuxuryText 
+                    as="div" 
+                    className="text-4xl font-bold mb-2"
+                    gradient="primary"
+                    glow
+                  >
+                    {stat.value}
+                  </LuxuryText>
+                  <div className="text-xs text-white/60 uppercase tracking-wider">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Testimonials Grid */}
+          <div className="grid md:grid-cols-2 gap-6">
             {successStories.map((story, index) => (
               <motion.div
                 key={index}
@@ -361,11 +456,24 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300"
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className="bg-black/50 backdrop-blur-sm border border-[#c6ff00]/10 rounded-xl p-6 hover:border-[#c6ff00]/30 transition-all duration-300"
               >
-                <h3 className="font-bold text-xl mb-3 text-agency-blue">{story.title}</h3>
-                <p className="text-gray-700 mb-4">{story.description}</p>
-                <Link to="/contact" className="text-agency-blue hover:text-agency-indigo flex items-center gap-2 transition-colors">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0">
+                    <div className="h-12 w-12 rounded-full bg-[#c6ff00]/10 flex items-center justify-center">
+                      <div className="text-[#c6ff00] font-bold">{story.initials}</div>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-[#c6ff00]">{story.title}</h3>
+                    <p className="text-sm text-white/70">{story.description}</p>
+                  </div>
+                </div>
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center gap-1.5 text-sm text-[#c6ff00] hover:text-[#d4ff4d] mt-4 transition-colors"
+                >
                   <span>Read full case study</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -376,8 +484,9 @@ const Services = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-agency-blue to-agency-indigo text-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-gradient-to-br from-black via-black/95 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e6ff0008_1px,transparent_1px),linear-gradient(to_bottom,#e6ff0008_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -385,26 +494,51 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Scale Your Business—Hassle-Free?</h2>
-            <p className="text-xl mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6ff00]/10 border border-[#c6ff00]/20 text-sm font-medium text-[#c6ff00] mb-6">
+              <Zap className="h-4 w-4 text-[#c6ff00]" />
+              <span>Ready to Get Started?</span>
+            </div>
+            
+            <LuxuryText 
+              as="h2" 
+              className="text-3xl md:text-4xl font-bold tracking-tight mb-6"
+              gradient="primary"
+              glow
+            >
+              Scale Your Business—Hassle-Free
+            </LuxuryText>
+            
+            <p className="text-lg text-white/70 mb-8 max-w-3xl mx-auto">
               Get started with our risk-free 60-day money-back guarantee today!
             </p>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <CtaButton size="lg" className="bg-white text-agency-blue hover:bg-opacity-90">
+                <EnhancedButton 
+                  variant="premium" 
+                  size="lg" 
+                  glow
+                  className="w-full sm:w-auto"
+                  icon={<ArrowRight className="h-5 w-5" />}
+                  iconPosition="right"
+                >
                   Get Your Free Growth Plan
-                </CtaButton>
+                </EnhancedButton>
               </Link>
               <Link to="/pricing">
-                <CtaButton variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-agency-blue">
+                <EnhancedButton 
+                  variant="outline" 
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
                   View Pricing Plans
-                </CtaButton>
+                </EnhancedButton>
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
-    </PageLayout>
+    </EnhancedPageLayout>
   );
 };
 

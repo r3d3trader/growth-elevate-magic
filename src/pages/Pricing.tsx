@@ -1,414 +1,431 @@
-
-import React, { useState } from "react";
-import PageLayout from "@/components/layout/PageLayout";
-import { motion } from "framer-motion";
-import CtaButton from "@/components/ui/cta-button";
-import { Check, HelpCircle, X } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import EnhancedPageLayout from "@/components/layout/EnhancedPageLayout";
+import EnhancedButton from "@/components/ui/enhanced-button";
+import { LuxuryText } from "@/components/ui/premium-effects";
+import { Check, HelpCircle, X, Zap, Star, Shield, ChevronRight, TrendingUp, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { useInView } from "react-intersection-observer";
+import EnhancedParticles from "@/components/ui/enhanced-particles";
+import MobilePricingSection from "@/components/sections/MobilePricingSection";
+import MobileForm from "@/components/ui/mobile-form";
+import ResponsiveContainer from "@/components/ui/responsive-container";
+import ResponsiveText from "@/components/ui/responsive-text";
+import MobileCTA from "@/components/sections/MobileCTA";
+import MobileFAQ from "@/components/sections/MobileFAQ";
 
-const Pricing = () => {
+// Import FormField type from mobile-form
+import type { FormField } from "@/components/ui/mobile-form";
+
+function Pricing() {
   const [isAnnual, setIsAnnual] = useState(false);
-  
-  const plans = [
+  const [countdown, setCountdown] = useState({ days: 3, hours: 12, minutes: 45 });
+  const { ref: heroRef, inView: heroInView } = useInView({ triggerOnce: true });
+  const { ref: plansRef, inView: plansInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  // Simulate countdown timer
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown(prev => {
+        if (prev.minutes > 0) {
+          return { ...prev, minutes: prev.minutes - 1 };
+        } else if (prev.hours > 0) {
+          return { ...prev, hours: prev.hours - 1, minutes: 59 };
+        } else if (prev.days > 0) {
+          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59 };
+        }
+        return prev;
+      });
+    }, 60000); // Update every minute
+    
+    return () => clearInterval(timer);
+  }, []);
+
+  // Custom pricing plans for the MobilePricingSection
+  const mobilePlans = [
     {
-      name: "Partner",
-      setupFee: 997,
-      monthlyFee: 197,
-      annualFee: 1970, // 10 months for annual (2 months free)
+      title: "Partner",
+      price: {
+        monthly: 497,
+        yearly: 4970,
+        setupFee: 4997,
+      },
       description: "Perfect for small businesses looking to start growing",
       features: [
-        "4-page WordPress site",
-        "Basic custom layout",
-        "Entry-level chatbot",
-        "Basic sequences",
-        "Basic automation",
-        "Basic page",
-        "Standard page",
-        "Essential integration",
-        "Basic integration",
-        "Basic tools",
-        "Basic on-page SEO",
-        "Standard security",
-        "Basic analytics",
-        "Basic wireframing",
-        "Basic enhancements",
-        "Basic tools",
-        "60-day guarantee",
+        { text: "4-page WordPress site", included: true },
+        { text: "Basic custom layout", included: true },
+        { text: "Entry-level chatbot", included: true },
+        { text: "Basic sequences", included: true },
+        { text: "Basic automation", included: true },
+        { text: "Basic on-page SEO", included: true },
+        { text: "Standard security", included: true },
+        { text: "Basic analytics", included: true },
+        { text: "60-day guarantee", included: true },
       ],
-      highlight: false,
-      conversion: "Medium"
+      ctaText: "Get Started",
+      ctaHref: "/contact?plan=partner",
     },
     {
-      name: "Pro",
-      setupFee: 2997,
-      monthlyFee: 297,
-      annualFee: 2970, // 10 months for annual (2 months free)
+      title: "Pro",
+      price: {
+        monthly: 797,
+        yearly: 7970,
+        setupFee: 7997,
+      },
       description: "Our most popular plan for growing businesses",
       features: [
-        "10-page WordPress site",
-        "Advanced UX design",
-        "Multi-channel bot",
-        "Multi-channel triggers",
-        "Robust campaigns",
-        "Proactive management",
-        "Multi-step workflows",
-        "Conversion-optimized",
-        "Enhanced squeeze pages",
-        "Enhanced lead magnets",
-        "Integrated funnels",
-        "Advanced video funnel",
-        "Enhanced page",
-        "Advanced page",
-        "Advanced setup",
-        "Enhanced integration",
-        "Improved system",
-        "Advanced management",
-        "Enhanced automation",
-        "Advanced AI agent",
-        "Enhanced SEO",
-        "Enhanced security",
-        "Advanced analytics",
-        "Enhanced wireframing",
-        "Advanced optimization",
-        "Enhanced features",
-        "60-day guarantee",
+        { text: "10-page WordPress site", included: true },
+        { text: "Advanced UX design", included: true },
+        { text: "Multi-channel bot", included: true },
+        { text: "Multi-channel triggers", included: true },
+        { text: "Robust campaigns", included: true },
+        { text: "Advanced AI agent", included: true },
+        { text: "Enhanced SEO", included: true },
+        { text: "Enhanced security", included: true },
+        { text: "60-day guarantee", included: true },
       ],
-      highlight: true,
-      conversion: "High"
+      popular: true,
+      ctaText: "Get Started",
+      ctaHref: "/contact?plan=pro",
+      testimonial: {
+        quote: "Since working with Growth Elevate Magic, we've seen a 45% increase in our conversion rates!",
+        author: "Michael Johnson",
+        role: "CEO, TechStart"
+      }
     },
     {
-      name: "Elite",
-      setupFee: 4997,
-      monthlyFee: 497,
-      annualFee: 4970, // 10 months for annual (2 months free)
+      title: "Elite",
+      price: {
+        monthly: 979,
+        yearly: 9790,
+        setupFee: 9997,
+      },
       description: "Enterprise-grade solutions for maximum growth",
       features: [
-        "Fully customized premium site",
-        "Bespoke premium design",
-        "Fully customized AI bot",
-        "Enterprise-grade triggers",
-        "High-impact workflows",
-        "Comprehensive solutions",
-        "End-to-end custom automation",
-        "Premium landing pages",
-        "Fully optimized pages",
-        "Advanced custom strategies",
-        "Full-scale automation",
-        "Bespoke video funnel",
-        "Premium page",
-        "Fully optimized page",
-        "Comprehensive integration",
-        "Fully customized integration",
-        "Complete solution",
-        "Enterprise-level management",
-        "Full-service management",
-        "Enterprise-grade agent",
-        "In-depth SEO strategy",
-        "Enterprise-level security",
-        "Comprehensive analytics",
-        "Premium custom wireframing",
-        "Cutting-edge optimization",
-        "Comprehensive system",
-        "60-day guarantee",
+        { text: "Fully customized premium site", included: true },
+        { text: "Bespoke premium design", included: true },
+        { text: "Fully customized AI bot", included: true },
+        { text: "Enterprise-grade triggers", included: true },
+        { text: "High-impact workflows", included: true },
+        { text: "Premium security suite", included: true },
+        { text: "Advanced analytics dashboard", included: true },
+        { text: "Dedicated account manager", included: true },
+        { text: "60-day guarantee", included: true },
       ],
-      highlight: false,
-      conversion: "Super Sales Machine"
+      ctaText: "Contact Sales",
+      ctaHref: "/contact?plan=elite",
+    },
+  ];
+
+  // Define contactFormFields with proper type annotation
+  const contactFormFields: FormField[] = [
+    {
+      id: "name",
+      label: "Name",
+      type: "text",
+      placeholder: "Your name",
+      required: true
+    },
+    {
+      id: "email",
+      label: "Email Address",
+      type: "email",
+      placeholder: "you@example.com",
+      required: true
+    },
+    {
+      id: "company",
+      label: "Company",
+      type: "text",
+      placeholder: "Your company name"
+    },
+    {
+      id: "phone",
+      label: "Phone Number",
+      type: "tel",
+      placeholder: "(123) 456-7890"
+    },
+    {
+      id: "plan",
+      label: "Interested Plan",
+      type: "select",
+      options: [
+        { value: "partner", label: "Partner Plan" },
+        { value: "pro", label: "Pro Plan" },
+        { value: "elite", label: "Elite Plan" },
+        { value: "not-sure", label: "Not Sure Yet" }
+      ]
+    },
+    {
+      id: "message",
+      label: "Message",
+      type: "textarea",
+      placeholder: "Tell us about your goals...",
+      rows: 4
     }
   ];
 
-  // Table data - all services and their availability per plan
-  const services = [
-    { name: "Conversion", key: "conversion", tooltip: "Expected level of sales and conversion performance" },
-    { name: "Pages Setup / Website Setup", key: "pages", tooltip: "Number and quality of web pages created" },
-    { name: "Custom Website Creation", key: "website", tooltip: "Overall quality and customization of website design" },
-    { name: "Bot Automation", key: "bot", tooltip: "Automated chat systems to engage visitors" },
-    { name: "Abandoned Cart/Action Triggers", key: "cart", tooltip: "Systems to recover abandoned sales processes" },
-    { name: "Email Sequences/Automation", key: "email", tooltip: "Automated email marketing campaigns" },
-    { name: "Reputation Management", key: "reputation", tooltip: "Tools to manage and improve online reputation" },
-    { name: "Workflow Automation", key: "workflow", tooltip: "Systems to automate business processes" },
-    { name: "Landing Pages", key: "landing", tooltip: "Pages designed to convert visitors to leads" },
-    { name: "Squeeze Pages", key: "squeeze", tooltip: "Pages focused on capturing email addresses" },
-    { name: "Lead Magnet Creation", key: "leadmagnet", tooltip: "Free offers to attract potential customers" },
-    { name: "Webinar Automation", key: "webinar", tooltip: "Systems to automate webinar registration and follow-up" },
-    { name: "3 Step Video Funnel", key: "video", tooltip: "Multi-step video marketing sequence" },
-    { name: "Thank You Page", key: "thankyou", tooltip: "Pages shown after form submission" },
-    { name: "Offer Page", key: "offer", tooltip: "Pages presenting your products or services" },
-    { name: "CRM Integration & Lead Forms", key: "crm", tooltip: "Customer relationship management system setup" },
-    { name: "Calendar Integration", key: "calendar", tooltip: "Booking systems for appointments" },
-    { name: "Referral Management", key: "referral", tooltip: "Systems to track and incentivize referrals" },
-    { name: "Ads Management", key: "ads", tooltip: "Creation and management of paid advertising" },
-    { name: "Social Media Automation", key: "social", tooltip: "Automated posting and engagement on social platforms" },
-    { name: "AI Call Agent", key: "call", tooltip: "AI-powered phone call handling" },
-    { name: "SEO", key: "seo", tooltip: "Search engine optimization to improve visibility" },
-    { name: "Website Security", key: "security", tooltip: "Protection against hacks and data breaches" },
-    { name: "Analytics", key: "analytics", tooltip: "Tracking and reporting on key metrics" },
-    { name: "Wireframing & Website Layout", key: "wireframe", tooltip: "Planning the structure and flow of your site" },
-    { name: "Website Speed Optimization", key: "speed", tooltip: "Making your website load faster" },
-    { name: "Lead Capture/Management", key: "leads", tooltip: "Systems to capture and organize potential customers" },
-    { name: "Money Back Guarantee", key: "guarantee", tooltip: "Our risk-free promise to you" },
-  ];
+  const handleFormSubmit = (data: Record<string, any>) => {
+    console.log("Form submitted:", data);
+    // Here you would typically send the data to your backend or API
+  };
 
   return (
-    <PageLayout>
+    <EnhancedPageLayout>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-gradient-to-b from-agency-blue-50 to-white">
-        <div className="container mx-auto px-4">
+      <section className="relative pt-24 pb-16 overflow-hidden" ref={heroRef}>
+        {/* Enhanced particles background */}
+        <div className="absolute inset-0 z-0">
+          <EnhancedParticles
+            className="absolute inset-0"
+            color="#c6ff00"
+            count={30}
+            speed={0.5}
+            size={1}
+            maxSize={3}
+          />
+        </div>
+        
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black z-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(198,255,0,0.1),transparent_50%)]"></div>
+        </div>
+        
+        <ResponsiveContainer className="relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-              <span className="text-gradient">Simple, Transparent Pricing</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8">
-              Choose the perfect plan to accelerate your business growth with our risk-free 60-day money-back guarantee.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6ff00]/10 border border-[#c6ff00]/20 text-sm font-medium text-[#c6ff00] mb-6"
+            >
+              <TrendingUp className="w-4 h-4 text-[#c6ff00]" /> Limited Availability
+            </motion.div>
             
-            {/* Billing toggle */}
-            <div className="flex items-center justify-center mb-8">
-              <span className={`mr-3 ${!isAnnual ? 'font-bold text-agency-blue' : 'text-gray-600'}`}>Monthly</span>
-              <button 
-                onClick={() => setIsAnnual(!isAnnual)}
-                className={`relative inline-flex h-6 w-12 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isAnnual ? 'bg-agency-blue' : 'bg-gray-200'}`}
+            <ResponsiveText 
+              as="h1" 
+              size="5xl"
+              weight="bold"
+              className="mb-4"
+              gradient="primary"
+              glow
+            >
+              Ready to Transform Your Business?
+            </ResponsiveText>
+            
+            <ResponsiveText 
+              size="xl"
+              color="white/70"
+              className="mb-8 max-w-3xl mx-auto"
+            >
+              We only accept <span className="text-[#c6ff00] font-medium">5 new clients per week</span> to ensure each business gets our full attention. Secure your spot now with our risk-free 60-day money-back guarantee.
+            </ResponsiveText>
+            
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <EnhancedButton 
+                variant="premium"
+                size="lg" 
+                glow
+                className="w-full sm:w-auto px-8 py-4 text-lg shadow-xl shadow-[#c6ff00]/20 group"
+                icon={<Zap className="w-5 h-5" />}
+                iconPosition="left"
+                href="/contact"
               >
-                <span 
-                  className={`pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform ${isAnnual ? 'translate-x-6' : 'translate-x-1'}`} 
-                />
-              </button>
-              <span className={`ml-3 ${isAnnual ? 'font-bold text-agency-blue' : 'text-gray-600'}`}>Annual (Save 16%)</span>
-            </div>
+                Get Your Free Strategy Call
+              </EnhancedButton>
+              
+              <EnhancedButton 
+                variant="outline"
+                size="lg" 
+                className="w-full sm:w-auto px-8 py-4 text-lg border-[#c6ff00]/30 hover:bg-[#c6ff00]/5"
+                icon={<Star className="w-5 h-5" />}
+                iconPosition="left"
+                href="#pricing-plans"
+              >
+                See Pricing Plans
+              </EnhancedButton>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap justify-center gap-4 items-center text-sm text-white/70"
+            >
+              <div className="flex items-center gap-1.5">
+                <Shield className="h-4 w-4 text-[#c6ff00]" />
+                <span>60-Day Guarantee</span>
+              </div>
+              <div className="h-3 w-px bg-white/10" />
+              <div className="flex items-center gap-1.5">
+                <Check className="h-4 w-4 text-[#c6ff00]" />
+                <span>No Long-Term Contracts</span>
+              </div>
+              <div className="h-3 w-px bg-white/10" />
+              <div className="flex items-center gap-1.5">
+                <Check className="h-4 w-4 text-[#c6ff00]" />
+                <span>Cancel Anytime</span>
+              </div>
+            </motion.div>
           </motion.div>
-        </div>
+        </ResponsiveContainer>
       </section>
-
-      {/* Pricing Cards */}
-      <section className="py-10 md:py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {plans.map((plan, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative rounded-2xl overflow-hidden border ${plan.highlight ? 'border-agency-blue shadow-lg shadow-agency-blue/10' : 'border-gray-200'}`}
+      
+      {/* Pricing Section */}
+      <section id="pricing-plans" className="py-16 relative" ref={plansRef}>
+        <MobilePricingSection 
+          title="Choose Your Growth Plan"
+          subtitle="Select the plan that best fits your business needs and goals"
+          plans={mobilePlans}
+        />
+      </section>
+      
+      {/* Contact Form Section */}
+      <section className="py-16 sm:py-20 relative bg-black/50">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(198,255,0,0.05),transparent_60%)]"></div>
+        
+        <ResponsiveContainer className="relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Form Content */}
+            <div>
+              <ResponsiveText
+                as="h2"
+                size="4xl"
+                weight="bold"
+                className="mb-4"
+                gradient="primary"
+                glow
               >
-                {plan.highlight && (
-                  <div className="absolute top-0 left-0 right-0 bg-agency-blue text-white text-center py-1 text-sm font-medium">
-                    MOST POPULAR
+                Ready to Get Started?
+              </ResponsiveText>
+              
+              <ResponsiveText
+                size="lg"
+                color="neutral-400"
+                className="mb-6"
+              >
+                Fill out the form below and one of our growth specialists will contact you within 24 hours to discuss your business needs and goals.
+              </ResponsiveText>
+              
+              <div className="space-y-6 mb-8">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#c6ff00]/10 flex items-center justify-center mr-4">
+                    <Check className="h-5 w-5 text-[#c6ff00]" />
                   </div>
-                )}
-                
-                <div className={`p-6 ${plan.highlight ? 'pt-8' : 'pt-6'}`}>
-                  <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                  <p className="text-gray-600 h-12">{plan.description}</p>
-                  
-                  <div className="mt-4 mb-6">
-                    <div className="flex items-end">
-                      <span className="text-4xl font-bold">${plan.setupFee}</span>
-                      <span className="text-gray-600 ml-1 mb-1">setup</span>
-                    </div>
-                    <div className="flex items-end mt-2">
-                      <span className="text-3xl font-bold">
-                        ${isAnnual ? Math.round(plan.annualFee / 12) : plan.monthlyFee}
-                      </span>
-                      <span className="text-gray-600 ml-1 mb-1">/month</span>
-                    </div>
-                    {isAnnual && (
-                      <p className="text-sm text-agency-blue mt-1">
-                        Billed annually (${plan.annualFee}/year)
-                      </p>
-                    )}
-                  </div>
-                  
-                  <Link to="/contact" className="block w-full">
-                    <CtaButton 
-                      className={`w-full ${plan.highlight ? '' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`} 
-                      variant={plan.highlight ? "primary" : "secondary"}
-                    >
-                      Get Started
-                    </CtaButton>
-                  </Link>
-                  
-                  <div className="mt-6">
-                    <p className="font-medium mb-3">Key features:</p>
-                    <ul className="space-y-2">
-                      {plan.features.slice(0, 7).map((feature, i) => (
-                        <li key={i} className="flex items-start">
-                          <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div>
+                    <h3 className="font-medium text-white">Expert Strategy Session</h3>
+                    <p className="text-neutral-400">Get a free growth strategy session tailored to your business</p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Compare Plans Table */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Compare All Features</h2>
-            <p className="text-lg text-gray-700">
-              See all the features included in each of our pricing plans
-            </p>
-          </motion.div>
-
-          <div className="overflow-x-auto bg-white rounded-xl shadow-md">
-            <table className="w-full">
-              <thead className="bg-agency-blue text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left">Service</th>
-                  <th className="px-6 py-4 text-center">Partner</th>
-                  <th className="px-6 py-4 text-center">Pro</th>
-                  <th className="px-6 py-4 text-center">Elite</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {services.map((service, index) => (
-                  <motion.tr 
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.2, delay: index * 0.02 }}
-                    className="hover:bg-gray-50"
-                  >
-                    <td className="px-6 py-4">
-                      <div className="flex items-center">
-                        <span className="font-medium">{service.name}</span>
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger>
-                              <HelpCircle className="h-4 w-4 ml-2 text-gray-400" />
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p className="max-w-xs">{service.tooltip}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      {plans[0].features[index] || (
-                        <X className="h-5 w-5 text-gray-400 mx-auto" />
-                      )}
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      {plans[1].features[index] || (
-                        <X className="h-5 w-5 text-gray-400 mx-auto" />
-                      )}
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      {plans[2].features[index] || (
-                        <X className="h-5 w-5 text-gray-400 mx-auto" />
-                      )}
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-700">
-              Get answers to the most common questions about our pricing and services
-            </p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto grid gap-6">
-            {[
-              {
-                question: "How does the 60-day money-back guarantee work?",
-                answer: "Our guarantee is simple - if you're not seeing results within 60 days of implementing our solutions, we'll refund your setup fee in full. We stand behind the quality of our work and are confident in our ability to deliver results."
-              },
-              {
-                question: "Can I upgrade my plan later?",
-                answer: "Absolutely! You can upgrade to a higher-tier plan at any time. We'll apply any prorated credits from your current plan to the new one, making the transition seamless."
-              },
-              {
-                question: "Are there any hidden fees?",
-                answer: "No hidden fees. The prices you see are all-inclusive for the services listed in each plan. The only additional costs would be for any third-party tools or platforms that might be required for your specific implementation needs."
-              },
-              {
-                question: "How long does implementation take?",
-                answer: "Implementation timeframes vary based on the complexity of your project and the plan you select. Typically, our Partner plan takes 2-3 weeks, Pro plan takes 3-4 weeks, and Elite plan takes 4-6 weeks for complete implementation."
-              },
-              {
-                question: "Do you offer custom plans for specific needs?",
-                answer: "Yes, we can create custom solutions tailored to your specific business requirements. Contact our team for a personalized consultation and quote."
-              }
-            ].map((faq, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-50 rounded-lg p-6"
-              >
-                <h3 className="font-bold text-xl mb-3">{faq.question}</h3>
-                <p className="text-gray-700">{faq.answer}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-agency-blue to-agency-indigo text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Scale Your Business Risk-Free?</h2>
-            <p className="text-xl mb-8">
-              Start with a free consultation and get your customized growth plan today.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <CtaButton size="lg" className="bg-white text-agency-blue hover:bg-opacity-90">
-                  Schedule Your Free Strategy Call
-                </CtaButton>
-              </Link>
+                
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#c6ff00]/10 flex items-center justify-center mr-4">
+                    <Check className="h-5 w-5 text-[#c6ff00]" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-white">Custom Implementation Plan</h3>
+                    <p className="text-neutral-400">Receive a detailed plan for implementing your growth strategy</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#c6ff00]/10 flex items-center justify-center mr-4">
+                    <Check className="h-5 w-5 text-[#c6ff00]" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-white">60-Day Money-Back Guarantee</h3>
+                    <p className="text-neutral-400">Risk-free engagement with our 60-day money-back guarantee</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="mt-6 text-white/80">
-              No commitment required. 60-day money-back guarantee.
-            </p>
-          </motion.div>
-        </div>
+            
+            {/* Contact Form */}
+            <div>
+              <MobileForm
+                title="Contact Us"
+                subtitle="We'll get back to you within 24 hours"
+                fields={contactFormFields}
+                submitLabel="Submit Inquiry"
+                onSubmit={handleFormSubmit}
+                style="premium"
+              />
+            </div>
+          </div>
+        </ResponsiveContainer>
       </section>
-    </PageLayout>
+      
+      {/* Final CTA Section */}
+      <MobileCTA
+        title="Ready To Elevate Your Business?"
+        subtitle="Join hundreds of businesses that have transformed their growth with our proven strategies."
+        primaryCTA={{
+          text: "Start Your Growth Journey",
+          href: "/contact"
+        }}
+        secondaryCTA={{
+          text: "Learn More",
+          href: "/about"
+        }}
+        background="gradient"
+        showParticles={true}
+      />
+      
+      {/* FAQ Section */}
+      <MobileFAQ
+        title="Pricing & Billing FAQs"
+        subtitle="Everything you need to know about our premium plans and services"
+        faqs={[
+          {
+            question: "What's included in the setup fee?",
+            answer: "Our one-time setup fee covers the complete implementation of your Growth Elevate Magic system. This includes professional website design, chatbot configuration, automation setup, initial content strategy development, and a personalized 1-on-1 onboarding call with our experts to align the system with your specific business goals and growth targets."
+          },
+          {
+            question: "Can I upgrade or downgrade my plan later?",
+            answer: "Absolutely! You can upgrade your plan at any time to access more features and accelerate your growth. If you need to downgrade, you can do so at the end of your current billing cycle. Our support team will help you make the transition smoothly with no loss of existing work or data."
+          },
+          {
+            question: "Is there a money-back guarantee?",
+            answer: "Yes, we offer a 60-day satisfaction guarantee on all our plans. If you're not completely satisfied with our service within the first 60 days, contact our support team and we'll issue a full refund of your monthly fee (setup fees are non-refundable as they cover work already completed)."
+          },
+          {
+            question: "How long does the initial setup process take?",
+            answer: "Typically, the setup process takes 2-3 weeks from start to finish, depending on the complexity of your implementation and how quickly you provide necessary materials and feedback. Our Partner plan may be completed in as little as 1-2 weeks, while Elite implementations may take 3-4 weeks due to their extensive customization and premium features."
+          },
+          {
+            question: "Do I need to sign a long-term contract?",
+            answer: "No. All our plans operate on a month-to-month basis with no long-term contracts required. For yearly subscriptions, you commit to 12 months but receive a significant discount on the monthly rate. You can cancel anytime after your initial term with no hidden fees or penalties."
+          },
+          {
+            question: "What kind of support do you provide?",
+            answer: "All plans include email support with a 24-hour response time. Pro and Elite plans also include priority support with same-day responses and monthly strategy calls. Elite members receive a dedicated account manager and direct phone support during business hours."
+          },
+          {
+            question: "Do you offer custom payment terms for larger businesses?",
+            answer: "Yes, for our Elite plan customers, we can offer flexible payment options, including quarterly billing, custom payment schedules, and even split billing across multiple departments. Contact our sales team to discuss the option that works best for your organization."
+          },
+          {
+            question: "What payment methods do you accept?",
+            answer: "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and direct bank transfers. For Elite plan customers, we can also arrange invoicing with net-30 terms upon credit approval."
+          }
+        ]}
+        className="mb-20"
+      />
+    </EnhancedPageLayout>
   );
-};
+}
 
 export default Pricing;

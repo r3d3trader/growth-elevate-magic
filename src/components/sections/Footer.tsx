@@ -36,11 +36,21 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to="/blog"
+                  to="/promotions"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Blog
+                  Promotions
                 </Link>
+              </li>
+              <li>
+                <a 
+                  href="https://kzmq95cdf0bq9kbjqcmj.lite.vusercontent.net/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Lite Page
+                </a>
               </li>
             </ul>
           </div>
@@ -160,8 +170,11 @@ const Footer = () => {
         <div className="border-t border-muted pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <span className="text-lg font-bold">
-              <span className="text-primary">AI</span> Sales System
+              <span className="text-primary">Leads</span> Obtainer
             </span>
+            <div className="text-xs text-muted-foreground mt-1">
+              30 N Gould St, Sheridan, WY, 82801
+            </div>
           </div>
           
           <div className="flex items-center gap-4">
@@ -188,7 +201,7 @@ const Footer = () => {
           </div>
           
           <div className="text-xs text-muted-foreground mt-4 md:mt-0">
-            © {new Date().getFullYear()} AI Sales System. All rights reserved.
+            © {new Date().getFullYear()} Leads Obtainer LLC Reg. 37-1957185. All rights reserved.
           </div>
         </div>
       </div>

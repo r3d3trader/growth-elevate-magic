@@ -1,7 +1,17 @@
+/* postcss-import should be first */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Import premium fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* Import enhanced premium fonts */
+@import '../public/assets/premium-fonts.css';
+
+/* Your custom styles below */
 
 @layer base {
   :root {
@@ -58,6 +68,26 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  /* Consistent heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl;
+  }
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+  h4 {
+    @apply text-xl sm:text-2xl;
+  }
+  /* Add consistent section spacing */
+  section {
+    @apply py-12 md:py-20;
+  }
 }
 
 @layer utilities {
@@ -99,31 +129,26 @@
   }
   
   .shadow-custom {
-    box-shadow: 0 0 20px rgba(198, 255, 0, 0.3);
-  }
-  
-  .shadow-custom-hover {
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    @apply shadow-[0_0_20px_hsl(var(--primary)/0.3)];
   }
   
   .shadow-custom-hover:hover {
-    box-shadow: 0 0 25px rgba(198, 255, 0, 0.5);
-    transform: translateY(-3px);
+    @apply shadow-[0_0_25px_hsl(var(--primary)/0.5)] -translate-y-[3px];
   }
   
   .neon-border {
     border: 1px solid hsl(var(--primary));
-    box-shadow: 0 0 10px rgba(198, 255, 0, 0.3);
+    @apply shadow-[0_0_10px_hsl(var(--primary)/0.3)];
   }
   
   .neon-glow {
-    text-shadow: 0 0 5px rgba(198, 255, 0, 0.7);
+    text-shadow: 0 0 5px hsl(var(--primary)/0.7);
   }
 
   .neon-box {
-    background-color: hsl(var(--background));
+    @apply bg-background;
     border: 2px solid hsl(var(--primary));
-    box-shadow: 0 0 15px rgba(198, 255, 0, 0.4);
+    @apply shadow-[0_0_15px_hsl(var(--primary)/0.4)];
   }
   
   .stat-card {
@@ -144,7 +169,63 @@
   
   .video-placeholder {
     @apply bg-background/40 border-2 border-primary;
-    box-shadow: inset 0 0 30px rgba(198, 255, 0, 0.2);
+    box-shadow: inset 0 0 30px hsl(var(--primary) / 0.2);
+  }
+
+  /* Consistent card styles */
+  .card {
+    @apply bg-card rounded-lg p-6 border border-primary/20 transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply border-primary/60;
+    box-shadow: 0 0 15px rgba(198, 255, 0, 0.2);
+  }
+
+  /* Consistent feature cards */
+  .feature-card {
+    @apply flex flex-col p-6 rounded-lg bg-card border border-primary/30 hover:border-primary transition-all duration-300;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 0 15px rgba(198, 255, 0, 0.2);
+    transform: translateY(-3px);
+  }
+
+  /* Country Flag Styles */
+  .fi {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    line-height: 1em;
+  }
+
+  .fi:before {
+    content: "\00a0";
+  }
+
+  .fi-us { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23bd3d44' d='M0 0h512v512H0'/%3E%3Cpath fill='%23fff' d='M512 0H0v512'/%3E%3Cpath fill='%23192f5d' d='M0 0h390v275H0z'/%3E%3C/svg%3E"); }
+  .fi-gb { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23142864' d='M0 0h512v512H0z'/%3E%3Cpath fill='%23fff' d='M0 0h512v102.4H0zm0 204.8h512V307H0zm0 204.8h512v102.4H0z'/%3E%3Cpath fill='%23cf142b' d='M0 0h204.8v307H0z'/%3E%3C/svg%3E"); }
+  .fi-ca { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23d52b1e' d='M0 0h512v512H0z'/%3E%3Cpath fill='%23fff' d='M512 0H0v512'/%3E%3C/svg%3E"); }
+  
+  .glow-effect {
+    @apply shadow-[0_0_15px_theme(colors.primary.DEFAULT/0.3)] relative;
+  }
+  .glow-effect::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(45deg, theme(colors.primary.DEFAULT), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
   }
 }
 
@@ -181,8 +262,7 @@
   }
 
   .hover-lift:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px rgba(198, 255, 0, 0.3);
+    @apply -translate-y-[3px] shadow-[0_0_15px_hsl(var(--primary)/0.3)];
   }
 
   /* Modern card styles */
@@ -191,8 +271,7 @@
   }
 
   .modern-card:hover {
-    @apply border-primary;
-    box-shadow: 0 0 15px rgba(198, 255, 0, 0.3);
+    @apply border-primary shadow-[0_0_15px_theme(colors.primary.DEFAULT/30)];
   }
 
   /* Clean navigation */
@@ -234,5 +313,14 @@
   
   .faq-answer {
     @apply p-4 bg-muted;
+  }
+
+  /* Consistent section titles */
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4 neon-glow;
+  }
+
+  .section-subtitle {
+    @apply text-xl text-muted-foreground mb-10 max-w-3xl mx-auto;
   }
 }

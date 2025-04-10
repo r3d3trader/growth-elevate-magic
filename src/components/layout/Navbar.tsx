@@ -30,7 +30,7 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
           >
             <span className="text-xl font-bold neon-glow">
-              <span className="text-primary">AI</span> Sales System
+              <span className="text-primary">Leads</span> Obtainer
             </span>
           </motion.div>
         </Link>
@@ -54,31 +54,31 @@ const Navbar = () => {
         >
           <Link
             to="/"
-            className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+            className="nav-link"
           >
             Home
           </Link>
           <Link
             to="/services"
-            className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+            className="nav-link"
           >
             Services
           </Link>
           <Link
             to="/pricing"
-            className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+            className="nav-link"
           >
             Pricing
           </Link>
           <Link
             to="/about"
-            className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+            className="nav-link"
           >
             About
           </Link>
           <Link
             to="/contact"
-            className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+            className="nav-link"
           >
             Contact
           </Link>
@@ -100,35 +100,35 @@ const Navbar = () => {
               <Link
                 to="/"
                 onClick={() => setIsOpen(false)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="nav-link block"
               >
                 Home
               </Link>
               <Link
                 to="/services"
                 onClick={() => setIsOpen(false)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="nav-link block"
               >
                 Services
               </Link>
               <Link
                 to="/pricing"
                 onClick={() => setIsOpen(false)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="nav-link block"
               >
                 Pricing
               </Link>
               <Link
                 to="/about"
                 onClick={() => setIsOpen(false)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="nav-link block"
               >
                 About
               </Link>
               <Link
                 to="/contact"
                 onClick={() => setIsOpen(false)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="nav-link block"
               >
                 Contact
               </Link>
